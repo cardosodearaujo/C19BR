@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Everaldo.Cardoso.Araujo.C19BR.Framework\Everaldo.Cardoso.C19BR.Framework.csproj" />
+  </ItemGroup>
+
+</Project>
