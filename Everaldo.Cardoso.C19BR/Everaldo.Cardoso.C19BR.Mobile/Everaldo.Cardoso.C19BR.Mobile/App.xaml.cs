@@ -1,7 +1,6 @@
 ﻿using Everaldo.Cardoso.C19BR.Mobile.View;
 using Everaldo.Cardoso.C19BR.Mobile.ViewModel;
 using Prism;
-using Prism.DryIoc;
 using Prism.Ioc;
 using Xamarin.Forms;
 

@@ -127,7 +127,7 @@
 
                             <Label
                                 HorizontalOptions="Start"
-                                Text="Data da coleta de dados"
+                                Text="Data da última atualização"
                                 FontSize="30"
                                 FontAttributes="Bold"
                                 TextColor="#af4448"/>
@@ -139,8 +139,32 @@
                                 FontAttributes="Bold"
                                 TextColor="#000000"/>
                         </StackLayout>
-                        
+
                         <Button
+                            BorderColor="#cb9ca1"
+                            BorderWidth="3"
+                            Text="Atualizar"
+                            BackgroundColor="#bbdefb"
+                            TextColor="#af4448"
+                            FontAttributes="Bold"
+                            FontSize="20"
+                            VerticalOptions="EndAndExpand"
+                            Command="{Binding UpdateData}">
+
+                            <Button.CornerRadius>
+                                <OnPlatform x:TypeArguments="x:Int32">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="25" />
+                                        <On Platform="Android" Value="60" />
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Button.CornerRadius>
+                        </Button>
+
+
+                        <Button
+                            BorderColor="#cb9ca1"
+                            BorderWidth="3"
                             Text="Detalhar por estado"
                             BackgroundColor="#bbdefb"
                             TextColor="#af4448"

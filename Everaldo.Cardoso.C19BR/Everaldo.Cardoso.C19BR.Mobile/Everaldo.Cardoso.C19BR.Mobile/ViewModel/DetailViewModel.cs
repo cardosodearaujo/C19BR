@@ -1,9 +1,11 @@
 ﻿using Acr.UserDialogs;
+using Everaldo.Cardoso.C19BR.Domain.Services;
 using Everaldo.Cardoso.C19BR.Framework.Bases;
 using Prism.Navigation;
 using Prism.Services;
-using System;
+using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 {
@@ -16,6 +18,14 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
         }
 
         #region "Propriedades"
+        public Command _UpdateData;
+        public Command UpdateData
+        {
+            get { return _UpdateData; }
+            set { SetProperty(ref _UpdateData, value); }
+        }
+
+
         private string _Location;
         public string Location
         {
@@ -58,13 +68,26 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 
         public override async void Initialize(INavigationParameters parameters)
         {
-            var dialog = UserDialogs.Instance.Loading(title: "Aguarde...", maskType: MaskType.Gradient);
-            Location = "Brasil";
-            Population = string.Format("{0:N}", 211372054);
-            NumberCases = string.Format("{0:N}", 19430);
-            NumberDeaths = string.Format("{0:N}", 1124);
-            DateUpdate = "11/04/2020";
-            await Task.Delay(5000);
+            UpdateData = new Command(LoadDataCountry);
+            LoadDataCountry();   
+        }
+
+        private async void LoadDataCountry()
+        {
+            var dialog = UserDialogs.Instance.Loading(title: "Obtendo dados do Brasil...", maskType: MaskType.Gradient);
+
+            var service = new CasesService();
+            var cases = await service.GetCasesByStates();
+
+            if (cases != null)
+            {
+                Location = "Brasil";
+                Population = string.Format("{0:N0}", cases.results.Select(F => F.estimated_population_2019).Sum());
+                NumberCases = string.Format("{0:N0}", cases.results.Select(F => F.confirmed).Sum());
+                NumberDeaths = string.Format("{0:N0}", cases.results.Select(F => F.deaths).Sum());
+                DateUpdate = cases.results.Max(F => F.date).ToString("dd/MM/yyyy");
+            }
+
             dialog.Dispose();
         }
     }

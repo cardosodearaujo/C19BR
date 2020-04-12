@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Everaldo.Cardoso.C19BR.Domain\Everaldo.Cardoso.C19BR.Domain.csproj" />
     <ProjectReference Include="..\..\Everaldo.Cardoso.C19BR.Framework\Everaldo.Cardoso.C19BR.Framework.csproj" />
   </ItemGroup>
 
