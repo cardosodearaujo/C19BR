@@ -4,13 +4,17 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.Detail"
+             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.CountryDetail"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
              prism:ViewModelLocator.AutowireViewModel="True"
-             NavigationPage.HasNavigationBar="False">
-    
+             NavigationPage.HasNavigationBar="False"
+             xmlns:viewControl="clr-namespace:Everaldo.Cardoso.C19BR.Mobile.ViewControl">
+
     <ContentPage.Content>
-        <StackLayout Margin="15,15,15,15">        
+        <StackLayout 
+            IsVisible="{Binding IsNotBusy}"
+            Margin="{OnPlatform iOS='15,40,15,15', Android='15,15,15,15'}">           
+
             <StackLayout
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
@@ -27,7 +31,7 @@
                             FontSize="35"
                             FontAttributes="Bold"
                             TextColor="#af4448"
-                            Text="Localidade"/>
+                            Text="Coronavírus"/>
 
                         <Label x:Name="lblLocation" 
                             FontSize="35"
@@ -56,8 +60,8 @@
                             
                             <Label 
                                 HorizontalOptions="CenterAndExpand"
-                                Text="Dados do local"
-                                FontSize="30"
+                                Text="Informações nacionais"
+                                FontSize="25"
                                 FontAttributes="Bold"
                                 TextColor="#af4448"/>
 
@@ -73,13 +77,13 @@
                             <Label 
                                 HorizontalOptions="Start"
                                 Text="População"
-                                FontSize="30"
+                                FontSize="25"
                                 FontAttributes="Bold"
                                 TextColor="#af4448"/>
 
                             <Label 
                                 Text="{Binding Population}"
-                                FontSize="30"
+                                FontSize="25"
                                 FontAttributes="Bold"
                                 TextColor="#000000"
                                 HorizontalOptions="Start"/>
@@ -92,14 +96,14 @@
                             <Label 
                                 HorizontalOptions="Start"
                                 Text="Casos confirmados"
-                                FontSize="30"
+                                FontSize="25"
                                 FontAttributes="Bold"
                                 TextColor="#af4448"/>
 
                             <Label 
                                 HorizontalOptions="Start"
                                 Text="{Binding NumberCases}"
-                                FontSize="30"
+                                FontSize="25"
                                 FontAttributes="Bold"
                                 TextColor="#000000"/>
                         </StackLayout>
@@ -109,15 +113,15 @@
 
                             <Label
                                 HorizontalOptions="Start"
-                                Text="Mortes confirmadas"
-                                FontSize="30"
+                                Text="Óbitos"
+                                FontSize="25"
                                 FontAttributes="Bold"
                                 TextColor="#af4448"/>
 
                             <Label
                                 HorizontalOptions="Start"
                                 Text="{Binding NumberDeaths}"
-                                FontSize="30"
+                                FontSize="25"
                                 FontAttributes="Bold"
                                 TextColor="#000000"/>
                         </StackLayout>
@@ -127,65 +131,67 @@
 
                             <Label
                                 HorizontalOptions="Start"
-                                Text="Data da última atualização"
-                                FontSize="30"
+                                Text="Taxa de mortalidade"
+                                FontSize="25"
+                                FontAttributes="Bold"
+                                TextColor="#af4448"/>
+
+                            <Label 
+                                HorizontalOptions="Start"
+                                Text="{Binding DeathsRate}"
+                                FontSize="25"
+                                FontAttributes="Bold"
+                                TextColor="#000000"/>
+                        </StackLayout>
+                        
+                        <StackLayout 
+                            Margin="0,0,0,20">
+
+                            <Label
+                                HorizontalOptions="Start"
+                                Text="Última atualização"
+                                FontSize="25"
                                 FontAttributes="Bold"
                                 TextColor="#af4448"/>
 
                             <Label 
                                 HorizontalOptions="Start"
                                 Text="{Binding DateUpdate}"
-                                FontSize="30"
+                                FontSize="25"
                                 FontAttributes="Bold"
                                 TextColor="#000000"/>
                         </StackLayout>
 
-                        <Button
-                            BorderColor="#cb9ca1"
-                            BorderWidth="3"
-                            Text="Atualizar"
-                            BackgroundColor="#bbdefb"
-                            TextColor="#af4448"
-                            FontAttributes="Bold"
-                            FontSize="20"
+                        <StackLayout 
                             VerticalOptions="EndAndExpand"
-                            Command="{Binding UpdateData}">
+                            Orientation="Horizontal">
 
-                            <Button.CornerRadius>
-                                <OnPlatform x:TypeArguments="x:Int32">
-                                    <OnPlatform.Platforms>
-                                        <On Platform="iOS" Value="25" />
-                                        <On Platform="Android" Value="60" />
-                                    </OnPlatform.Platforms>
-                                </OnPlatform>
-                            </Button.CornerRadius>
-                        </Button>
+                            <viewControl:RoundedButton 
+                                x:Name="rbtnDetailStade" 
+                                ValueWidth="50" 
+                                ValueHeight="50" 
+                                ButtonBackgroundColor="#bbdefb" 
+                                TextColor="#af4448" 
+                                Text="Detalhar por estado"
+                                ValueBorderColor="#cb9ca1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand"/>
 
-
-                        <Button
-                            BorderColor="#cb9ca1"
-                            BorderWidth="3"
-                            Text="Detalhar por estado"
-                            BackgroundColor="#bbdefb"
-                            TextColor="#af4448"
-                            FontAttributes="Bold"
-                            FontSize="20"
-                            VerticalOptions="EndAndExpand">
+                            <viewControl:RoundButton 
+                                x:Name="rbtnUpdateData" 
+                                IconCode="&#xF450;" 
+                                IconCodeColor="#af4448" 
+                                ButtonBackgroundColor="Transparent" 
+                                Command="{Binding UpdateData}" 
+                                ValueBorderColor="Transparent"
+                                HorizontalOptions="End"
+                                ValueMargin="0"
+                                VerticalOptions="CenterAndExpand"/>                           
                             
-                            <Button.CornerRadius>
-                                <OnPlatform x:TypeArguments="x:Int32">
-                                    <OnPlatform.Platforms>
-                                        <On Platform="iOS" Value="25" />
-                                        <On Platform="Android" Value="60" />
-                                    </OnPlatform.Platforms>
-                                </OnPlatform>
-                            </Button.CornerRadius>
-                        </Button>                     
-                        
+                        </StackLayout>                       
                     </StackLayout>                    
                 </Frame>                
             </StackLayout>            
         </StackLayout>
-    </ContentPage.Content>
-    
+    </ContentPage.Content>    
 </ContentPage>

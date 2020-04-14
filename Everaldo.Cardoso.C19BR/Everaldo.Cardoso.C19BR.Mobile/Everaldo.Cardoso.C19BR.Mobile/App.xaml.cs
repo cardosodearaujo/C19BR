@@ -25,14 +25,14 @@ namespace Everaldo.Cardoso.C19BR.Mobile
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<Detail, DetailViewModel>();
+            containerRegistry.RegisterForNavigation<CountryDetail, CountryDetailViewModel>();
             containerRegistry.RegisterForNavigation<SearchList, SearchListViewModel>();
         }
 
         protected async override void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("NavigationPage/Detail");
+            await NavigationService.NavigateAsync("NavigationPage/CountryDetail");
         }
     }
 }

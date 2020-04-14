@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Everaldo.Cardoso.C19BR.Mobile.ViewControl.RoundedButton"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="this"
+    Visual="Material"
+    mc:Ignorable="d">
+
+    <StackLayout>
+        <Button
+            x:Name="Button"
+            Margin="15,0,15,0"
+            BackgroundColor="{Binding ButtonBackgroundColor, Source={x:Reference this}}"
+            Clicked="ButtonClicked"
+            Command="{Binding Command, Source={x:Reference this}}"
+            CommandParameter="{Binding CommandParameter, Source={x:Reference this}}"
+            FontAttributes="Bold"
+            FontSize="18"
+            HeightRequest="{Binding ValueHeight, Source={x:Reference this}}"
+            Text="{Binding Text, Source={x:Reference this}}"
+            TextColor="{Binding TextColor, Source={x:Reference this}}"
+            WidthRequest="{Binding ValueWidth, Source={x:Reference this}}"
+            BorderWidth="1.5"
+            BorderColor="{Binding ValueBorderColor, Source={x:Reference this}}">
+
+            <Button.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Int32">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="25" />
+                        <On Platform="Android" Value="60" />
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Button.CornerRadius>
+        </Button>
+    </StackLayout>
+</Grid>

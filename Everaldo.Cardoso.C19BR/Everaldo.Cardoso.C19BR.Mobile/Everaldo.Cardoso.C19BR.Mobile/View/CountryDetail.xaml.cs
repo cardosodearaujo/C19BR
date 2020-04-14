@@ -4,9 +4,9 @@ using Xamarin.Forms.Xaml;
 namespace Everaldo.Cardoso.C19BR.Mobile.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Detail : ContentPage
+    public partial class CountryDetail : ContentPage
     {
-        public Detail()
+        public CountryDetail()
         {
             InitializeComponent();
         }

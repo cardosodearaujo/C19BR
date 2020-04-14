@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using Acr.UserDialogs;
+using Foundation;
 using Prism;
 using Prism.Ioc;
 using UIKit;
@@ -21,9 +22,8 @@ namespace Everaldo.Cardoso.C19BR.Mobile.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Rg.Plugins.Popup.Popup.Init();
-            global::Xamarin.Forms.Forms.Init();
+            global::Xamarin.Forms.Forms.Init();                       
             LoadApplication(new App(new iOSInitializer()));
-
             return base.FinishedLaunching(app, options);
         }
     }

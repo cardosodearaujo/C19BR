@@ -3,18 +3,18 @@ using Everaldo.Cardoso.C19BR.Domain.Services;
 using Everaldo.Cardoso.C19BR.Framework.Bases;
 using Prism.Navigation;
 using Prism.Services;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 {
-    public class DetailViewModel : BaseViewModel
+    public class CountryDetailViewModel : BaseViewModel
     {
-        public DetailViewModel(INavigationService navigationService, IPageDialogService pageDialogService) 
+        public CountryDetailViewModel(INavigationService navigationService, IPageDialogService pageDialogService) 
             : base(navigationService, pageDialogService)
         {
-
         }
 
         #region "Propriedades"
@@ -58,6 +58,14 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
         }
 
 
+        private string _DeathsRate;
+        public string DeathsRate
+        {
+            get { return _DeathsRate; }
+            set { SetProperty(ref _DeathsRate, value); }
+        }
+        
+
         private string _DateUpdate;
         public string DateUpdate
         {
@@ -66,16 +74,42 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
         }
         #endregion
 
+        #region "Metodos"
         public override async void Initialize(INavigationParameters parameters)
         {
-            UpdateData = new Command(LoadDataCountry);
-            LoadDataCountry();   
+            IsBusy = true;
+            try
+            {
+                UpdateData = new Command(LoadData);
+                await LoadDataCountry();                
+            }
+            catch (Exception ex)
+            {
+                UserDialogs.Instance.Toast(ex.Message, TimeSpan.FromSeconds(3));
+            }
+            finally
+            {
+                IsBusy = false;
+            }            
+         }
+
+        private async void LoadData()
+        {
+            try
+            {
+                using (UserDialogs.Instance.Loading(title: "Carregando dados do Brasil...", show: true, maskType: MaskType.Gradient))
+                {
+                    await LoadDataCountry();
+                }
+            }
+            catch (Exception ex)
+            {
+                UserDialogs.Instance.Toast(ex.Message, TimeSpan.FromSeconds(3));
+            }            
         }
 
-        private async void LoadDataCountry()
-        {
-            var dialog = UserDialogs.Instance.Loading(title: "Obtendo dados do Brasil...", maskType: MaskType.Gradient);
-
+        private async Task LoadDataCountry()
+        {            
             var service = new CasesService();
             var cases = await service.GetCasesByStates();
 
@@ -85,10 +119,10 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                 Population = string.Format("{0:N0}", cases.results.Select(F => F.estimated_population_2019).Sum());
                 NumberCases = string.Format("{0:N0}", cases.results.Select(F => F.confirmed).Sum());
                 NumberDeaths = string.Format("{0:N0}", cases.results.Select(F => F.deaths).Sum());
+                DeathsRate = string.Format("{0:N1}", (decimal.Parse(NumberDeaths) * 100) / decimal.Parse(NumberCases)) + "%";
                 DateUpdate = cases.results.Max(F => F.date).ToString("dd/MM/yyyy");
-            }
-
-            dialog.Dispose();
+            }            
         }
+        #endregion
     }
 }
