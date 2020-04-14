@@ -26,6 +26,14 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
         }
 
 
+        public Command _ListStates;
+        public Command ListStates
+        {
+            get { return _ListStates; }
+            set { SetProperty(ref _ListStates, value); }
+        }
+
+
         private string _Location;
         public string Location
         {
@@ -81,6 +89,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             try
             {
                 UpdateData = new Command(LoadData);
+                ListStates = new Command(OpenListStates);
                 await LoadDataCountry();                
             }
             catch (Exception ex)
@@ -122,6 +131,11 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                 DeathsRate = string.Format("{0:N1}", (decimal.Parse(NumberDeaths) * 100) / decimal.Parse(NumberCases)) + "%";
                 DateUpdate = cases.results.Max(F => F.date).ToString("dd/MM/yyyy");
             }            
+        }
+
+        private async void OpenListStates()
+        {
+            await NavigationService.NavigateAsync("NavigationPage/SearchList", animated: true);
         }
         #endregion
     }

@@ -21,11 +21,11 @@
                 
                 <Frame 
                     BorderColor="#cb9ca1"
-                    BackgroundColor="#bbdefb">
+                    BackgroundColor="Transparent">
                     
                     <StackLayout 
                         HorizontalOptions="CenterAndExpand"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal">                       
 
                         <Label x:Name="lblTitleLocation" 
                             FontSize="35"
@@ -57,7 +57,7 @@
 
                         <StackLayout 
                             Margin="0,0,0,20">
-                            
+
                             <Label 
                                 HorizontalOptions="CenterAndExpand"
                                 Text="Informações nacionais"
@@ -68,8 +68,8 @@
                             <BoxView 
                                 Color="#cb9ca1" 
                                 HeightRequest="1.5"/>
-                            
-                        </StackLayout>                        
+
+                        </StackLayout>
 
                         <StackLayout 
                             Margin="0,0,0,20">
@@ -143,7 +143,7 @@
                                 FontAttributes="Bold"
                                 TextColor="#000000"/>
                         </StackLayout>
-                        
+
                         <StackLayout 
                             Margin="0,0,0,20">
 
@@ -162,35 +162,66 @@
                                 TextColor="#000000"/>
                         </StackLayout>
 
-                        <StackLayout 
-                            VerticalOptions="EndAndExpand"
-                            Orientation="Horizontal">
+                        <StackLayout
+                            VerticalOptions="EndAndExpand">                            
+                        
+                        <BoxView 
+                            Color="#cb9ca1" 
+                            HeightRequest="1.5" 
+                            VerticalOptions="EndAndExpand"/>
+                        
+                            <StackLayout 
+                                Margin="0,5,0,0"
+                                Orientation="Horizontal">
 
-                            <viewControl:RoundedButton 
-                                x:Name="rbtnDetailStade" 
-                                ValueWidth="50" 
-                                ValueHeight="50" 
-                                ButtonBackgroundColor="#bbdefb" 
-                                TextColor="#af4448" 
-                                Text="Detalhar por estado"
-                                ValueBorderColor="#cb9ca1"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="CenterAndExpand"/>
+                                <viewControl:RoundButton 
+                                    x:Name="rbtnAbout" 
+                                    IconCode="&#xFcc1;" 
+                                    IconCodeColor="#af4448" 
+                                    ButtonBackgroundColor="Transparent" 
+                                    ValueBorderColor="#af4448"
+                                    HorizontalOptions="Start"
+                                    ValueMargin="0"
+                                    VerticalOptions="CenterAndExpand"/>
 
-                            <viewControl:RoundButton 
-                                x:Name="rbtnUpdateData" 
-                                IconCode="&#xF450;" 
-                                IconCodeColor="#af4448" 
-                                ButtonBackgroundColor="Transparent" 
-                                Command="{Binding UpdateData}" 
-                                ValueBorderColor="Transparent"
-                                HorizontalOptions="End"
-                                ValueMargin="0"
-                                VerticalOptions="CenterAndExpand"/>                           
-                            
-                        </StackLayout>                       
-                    </StackLayout>                    
-                </Frame>                
+                                <viewControl:RoundButton 
+                                    x:Name="rbtnUpdateData" 
+                                    IconCode="&#xF450;" 
+                                    IconCodeColor="#af4448" 
+                                    ButtonBackgroundColor="Transparent" 
+                                    Command="{Binding UpdateData}" 
+                                    ValueBorderColor="#af4448"
+                                    HorizontalOptions="Start"
+                                    ValueMargin="0"
+                                    VerticalOptions="CenterAndExpand"/>
+
+
+                                <Button
+                                    x:Name="Button"
+                                    Margin="15,0,15,0"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding ListStates}"
+                                    FontAttributes="Bold"
+                                    FontSize="18"
+                                    Text="Detalhar por estados"
+                                    TextColor="#af4448"
+                                    BorderWidth="2.5"
+                                    HorizontalOptions="FillAndExpand"
+                                    BorderColor="#cb9ca1">
+
+                                    <Button.CornerRadius>
+                                        <OnPlatform x:TypeArguments="x:Int32">
+                                            <OnPlatform.Platforms>
+                                                <On Platform="iOS" Value="25" />
+                                                <On Platform="Android" Value="60" />
+                                            </OnPlatform.Platforms>
+                                        </OnPlatform>
+                                    </Button.CornerRadius>
+                                </Button>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
             </StackLayout>            
         </StackLayout>
     </ContentPage.Content>    

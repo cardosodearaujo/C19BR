@@ -23,7 +23,7 @@
             Text="{Binding Text, Source={x:Reference this}}"
             TextColor="{Binding TextColor, Source={x:Reference this}}"
             WidthRequest="{Binding ValueWidth, Source={x:Reference this}}"
-            BorderWidth="1.5"
+            BorderWidth="2.5"
             BorderColor="{Binding ValueBorderColor, Source={x:Reference this}}">
 
             <Button.CornerRadius>

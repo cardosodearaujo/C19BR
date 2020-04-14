@@ -1,0 +1,10 @@
+﻿namespace Everaldo.Cardoso.C19BR.Domain.ValueObjects
+{
+    public class ItemSearchListVO
+    {
+        public string Name { get; set; }
+        public string Confirmed { get; set; }
+        public string Deaths { get; set; }
+        public string DeathRate { get; set; }
+    }
+}
