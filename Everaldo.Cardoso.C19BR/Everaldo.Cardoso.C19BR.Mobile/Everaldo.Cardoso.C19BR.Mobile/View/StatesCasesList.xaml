@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.StatesCasesList"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="True"
+             Title="Estados">
+
+    <ContentPage.Content>
+        <StackLayout
+            Margin="10,10,10,0"
+            IsVisible="{Binding IsNotBusy}">
+
+            <StackLayout
+                Margin="10,0,0,0">
+
+                <Grid  ColumnSpacing="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition Width="65"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Text="Estado" FontAttributes="Bold" TextColor="Black" Grid.Column="0"/>
+                    <Label Text="Confirmados" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="1"/>
+                    <Label Text="Óbitos" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="2"/>
+                    <Label Text="Mortalidade" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="3"/>
+                </Grid>
+            </StackLayout>
+           
+
+
+            <ListView
+                HasUnevenRows="True"
+                ItemsSource="{Binding List}"
+                SelectedItem="{Binding SelectedItem}"
+                SeparatorVisibility="Default">
+                <ListView.ItemTemplate >
+                    <DataTemplate >
+                        <ViewCell >
+                            <StackLayout 
+                                Margin="10"
+                                Orientation="Horizontal">
+                                
+                                <Grid  ColumnSpacing="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="180" />
+                                        <ColumnDefinition Width="65"/>
+                                        <ColumnDefinition Width="65"/>
+                                        <ColumnDefinition Width="65"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label
+                                        Grid.Column="0"
+                                        FontSize="18"
+                                        TextColor="#af4448"
+                                        Text="{Binding Name}" 
+                                        FontAttributes="Bold" />
+
+                                    <Label
+                                        Grid.Column="1"
+                                        FontSize="18"
+                                        HorizontalTextAlignment="End"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="{Binding Confirmed}" />
+
+                                    <Label
+                                        Grid.Column="2"
+                                        FontSize="18"
+                                        HorizontalTextAlignment="End"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="{Binding Deaths}" />
+
+                                    <Label
+                                        Grid.Column="3"
+                                        FontSize="18"
+                                        HorizontalTextAlignment="End"
+                                        HorizontalOptions="End"
+                                        Text="{Binding DeathRate}" />
+
+                                </Grid>
+                                
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,18 +1,18 @@
 ﻿using Everaldo.Cardoso.C19BR.Domain.Enums;
-using Everaldo.Cardoso.C19BR.Domain.Objects;
+using Everaldo.Cardoso.C19BR.Domain.Objects.Brasil;
 using Everaldo.Cardoso.C19BR.Framework.Bases;
-using Everaldo.Cardoso.C19BR.Framework.HttpTransaction;
 using Everaldo.Cardoso.C19BR.Framework.Enums;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
-using System;
+using Everaldo.Cardoso.C19BR.Framework.HttpTransaction;
 using Everaldo.Cardoso.C19BR.Framework.Notification;
+using Newtonsoft.Json;
+using System;
+using System.Threading.Tasks;
 
 namespace Everaldo.Cardoso.C19BR.Domain.Services
 {
-    public class CasesService : BaseService
+    public class CasesBrasilService : BaseService
     {
-        public async Task<ListOfCases> GetCasesByStates()
+        public async Task<ListOfCases> GetCasesFromStates()
         {
             try
             {

@@ -101,7 +101,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_world.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Everaldo.Cardoso.C19BR.Mobile\Everaldo.Cardoso.C19BR.Mobile.csproj">
       <Project>{972f7d37-5181-4ae9-b840-cff535505722}</Project>
@@ -109,7 +111,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_arrow_right.png" />
+    <AndroidResource Include="Resources\drawable\ic_brasil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_nordeste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_flag.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

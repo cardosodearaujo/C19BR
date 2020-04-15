@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Everaldo.Cardoso.C19BR.Domain.Objects
+namespace Everaldo.Cardoso.C19BR.Domain.Objects.Brasil
 {
     public class Header
     {

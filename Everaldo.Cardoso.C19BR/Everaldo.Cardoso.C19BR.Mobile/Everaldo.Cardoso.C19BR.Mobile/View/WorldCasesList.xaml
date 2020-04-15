@@ -4,12 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.SearchList"
+             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.WorldCasesList"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
              prism:ViewModelLocator.AutowireViewModel="True"
-             NavigationPage.HasNavigationBar="True"
-             Title="Situação dos estados brasileiros">
-
+             Title="Mundo">
     <ContentPage.Content>
         <StackLayout
             Margin="10,10,10,0"
@@ -20,19 +18,21 @@
 
                 <Grid  ColumnSpacing="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="115" />
+                        <ColumnDefinition Width="65"/>
                         <ColumnDefinition Width="65"/>
                         <ColumnDefinition Width="65"/>
                         <ColumnDefinition Width="65"/>
                     </Grid.ColumnDefinitions>
-                    
-                    <Label Text="Estado" FontAttributes="Bold" Grid.Column="0"/>
-                    <Label Text="Confirmados" FontAttributes="Bold" HorizontalTextAlignment="End" Grid.Column="1"/>
-                    <Label Text="Óbitos" FontAttributes="Bold" HorizontalTextAlignment="End" Grid.Column="2"/>
-                    <Label Text="Mortalidade" FontAttributes="Bold" HorizontalTextAlignment="End" Grid.Column="3"/>
+
+                    <Label Text="País" FontAttributes="Bold" TextColor="Black" Grid.Column="0"/>
+                    <Label Text="Confirmados" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="1"/>
+                    <Label Text="Recuperados" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="2"/>
+                    <Label Text="Óbitos" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="3"/>
+                    <Label Text="Mortalidade" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="4"/>
                 </Grid>
             </StackLayout>
-           
+
 
 
             <ListView
@@ -46,10 +46,11 @@
                             <StackLayout 
                                 Margin="10"
                                 Orientation="Horizontal">
-                                
+
                                 <Grid  ColumnSpacing="2">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="180" />
+                                        <ColumnDefinition Width="115" />
+                                        <ColumnDefinition Width="65"/>
                                         <ColumnDefinition Width="65"/>
                                         <ColumnDefinition Width="65"/>
                                         <ColumnDefinition Width="65"/>
@@ -74,17 +75,24 @@
                                         FontSize="18"
                                         HorizontalTextAlignment="End"
                                         HorizontalOptions="EndAndExpand"
-                                        Text="{Binding Deaths}" />
+                                        Text="{Binding Recovered}" />
 
                                     <Label
                                         Grid.Column="3"
+                                        FontSize="18"
+                                        HorizontalTextAlignment="End"
+                                        HorizontalOptions="EndAndExpand"
+                                        Text="{Binding Deaths}" />
+
+                                    <Label
+                                        Grid.Column="4"
                                         FontSize="18"
                                         HorizontalTextAlignment="End"
                                         HorizontalOptions="End"
                                         Text="{Binding DeathRate}" />
 
                                 </Grid>
-                                
+
 
                             </StackLayout>
                         </ViewCell>

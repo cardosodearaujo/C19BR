@@ -3,6 +3,7 @@ using Everaldo.Cardoso.C19BR.Mobile.ViewModel;
 using Prism;
 using Prism.Ioc;
 using Xamarin.Forms;
+using Menu = Everaldo.Cardoso.C19BR.Mobile.View.Menu;
 
 namespace Everaldo.Cardoso.C19BR.Mobile
 {
@@ -25,14 +26,16 @@ namespace Everaldo.Cardoso.C19BR.Mobile
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<Menu, MenuViewModel>();
             containerRegistry.RegisterForNavigation<CountryDetail, CountryDetailViewModel>();
-            containerRegistry.RegisterForNavigation<SearchList, SearchListViewModel>();
+            containerRegistry.RegisterForNavigation<StatesCasesList, StatesCasesListViewModel>();
+            containerRegistry.RegisterForNavigation<WorldCasesList, WorldCasesListViewModel>();
         }
 
         protected async override void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("NavigationPage/CountryDetail");
+            await NavigationService.NavigateAsync("NavigationPage/Menu");
         }
     }
 }

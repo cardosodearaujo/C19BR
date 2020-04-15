@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom" 
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.Menu"
+             SelectedTabColor="#FFFFFF"
+             UnselectedTabColor="#000000"
+             BarBackgroundColor="#ba6b6c"
+             x:Name="tbpMenu" 
+             CurrentPageChanged="PageChanged"
+             xmlns:views="clr-namespace:Everaldo.Cardoso.C19BR.Mobile.View">
+
+    <views:WorldCasesList Title="Mundo" IconImageSource="ic_world.png"/>
+    <views:CountryDetail Title="Brasil" IconImageSource="ic_brasil.png"/>
+    <views:StatesCasesList Title="Estados" IconImageSource="ic_flag.png"/>
+    
+</TabbedPage>

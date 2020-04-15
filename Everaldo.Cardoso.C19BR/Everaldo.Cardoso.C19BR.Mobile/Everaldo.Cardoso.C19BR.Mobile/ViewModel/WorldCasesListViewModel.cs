@@ -2,7 +2,6 @@
 using Everaldo.Cardoso.C19BR.Domain.Services;
 using Everaldo.Cardoso.C19BR.Domain.ValueObjects;
 using Everaldo.Cardoso.C19BR.Framework.Bases;
-using Everaldo.Cardoso.C19BR.Framework.ToolBox;
 using Prism.Navigation;
 using Prism.Services;
 using System;
@@ -12,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 {
-    public class SearchListViewModel : BaseViewModel
+    public class WorldCasesListViewModel : BaseViewModel
     {
-        public SearchListViewModel(INavigationService navigationService, IPageDialogService pageDialogService)
-            : base(navigationService, pageDialogService)
+        public WorldCasesListViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
         }
+
 
         #region "Propriedades"
         public List<ItemSearchListVO> _List;
@@ -45,7 +44,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             finally
             {
                 IsBusy = false;
-            }            
+            }
         }
 
         private void DetailItem(ItemSearchListVO item)
@@ -54,27 +53,27 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             {
                 //Abrir nova tela...
                 //Application.Current.MainPage = new NavigationPage(new Menu()) { BarBackgroundColor = Color.FromHex("#03A9F4") };
-                UserDialogs.Instance.Toast("Você selecionou o estado: " + item.Name, TimeSpan.FromSeconds(10));
+                //UserDialogs.Instance.Toast("Você selecionou o estado: " + item.Name, TimeSpan.FromSeconds(10));
             }
         }
 
         private async Task LoadData()
         {
-            var service = new CasesService();
-            var cases = await service.GetCasesByStates();
+            var service = new CasesWorldService();
+            var cases = await service.GetCasesFromWorld();
             if (cases != null)
             {
-                var states = StatesOfBrazil.getStatesOfBrazil();
-                List = (from R in cases.results
-                        orderby R.confirmed descending
+                List = (from pais in cases.data
+                        orderby (pais.latest_data.confirmed == null ? 0 : (long)pais.latest_data.confirmed) descending
                         select new ItemSearchListVO
                         {
-                            Name = states.Where(F => F.UF == R.state).FirstOrDefault().Name,
-                            Confirmed = string.Format("{0:N0}", R.confirmed),
-                            Deaths = string.Format("{0:N0}", R.deaths),
-                            DeathRate = R.death_rate == null ? "0,0%" : (string.Format("{0:N1}", (((decimal)R.death_rate) * 100)) + "%")
+                            Name = pais.name.ToUpper(),
+                            Confirmed = string.Format("{0:N0}", (pais.latest_data.confirmed == null ? 0 : (long)pais.latest_data.confirmed)),
+                            Recovered = string.Format("{0:N0}", (pais.latest_data.recovered == null ? 0 : (long)pais.latest_data.recovered)),
+                            Deaths = string.Format("{0:N0}", (pais.latest_data.deaths == null ? 0 : (long)pais.latest_data.deaths)),
+                            DeathRate = string.Format("{0:N1}", (pais.latest_data.calculated.death_rate == null ? 0 : ((decimal)pais.latest_data.calculated.death_rate))) + "%"
                         }).ToList();
-            }           
+            }
         }
         #endregion
     }

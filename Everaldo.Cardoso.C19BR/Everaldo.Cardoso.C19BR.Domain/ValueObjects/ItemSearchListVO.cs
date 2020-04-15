@@ -4,6 +4,7 @@
     {
         public string Name { get; set; }
         public string Confirmed { get; set; }
+        public string Recovered { get; set; }
         public string Deaths { get; set; }
         public string DeathRate { get; set; }
     }

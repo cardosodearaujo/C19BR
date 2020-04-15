@@ -28,6 +28,12 @@
     <Compile Update="View\CountryDetail.xaml.cs">
       <DependentUpon>CountryDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\StatesCasesList.xaml.cs">
+      <DependentUpon>StatesCasesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\WorldCasesList.xaml.cs">
+      <DependentUpon>WorldCasesList.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -43,7 +49,13 @@
     <EmbeddedResource Update="ViewControl\RoundButton.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SearchList.xaml">
+    <EmbeddedResource Update="View\Menu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\StatesCasesList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\WorldCasesList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

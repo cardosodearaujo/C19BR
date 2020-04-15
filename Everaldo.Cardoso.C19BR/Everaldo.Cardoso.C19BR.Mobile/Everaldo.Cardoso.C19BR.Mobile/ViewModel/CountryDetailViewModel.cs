@@ -119,8 +119,8 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 
         private async Task LoadDataCountry()
         {            
-            var service = new CasesService();
-            var cases = await service.GetCasesByStates();
+            var service = new CasesBrasilService();
+            var cases = await service.GetCasesFromStates();
 
             if (cases != null)
             {
