@@ -6,153 +6,162 @@
              mc:Ignorable="d"
              x:Class="Everaldo.Cardoso.C19BR.Mobile.View.CountryDetail"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-             prism:ViewModelLocator.AutowireViewModel="True">
+             prism:ViewModelLocator.AutowireViewModel="True">    
 
     <ContentPage.Content>
-        <StackLayout 
-            IsVisible="{Binding IsNotBusy}"
-            Margin="{OnPlatform iOS='15,40,15,0', Android='15,15,15,15'}">           
+        <StackLayout>
+            
+            <ActivityIndicator 
+                BackgroundColor="Transparent" 
+                VerticalOptions="Start" 
+                IsVisible="{Binding IsBusy}" 
+                IsRunning="{Binding IsBusy}"/>
+            
+            <StackLayout 
+                IsVisible="{Binding IsNotBusy}"
+                Margin="{OnPlatform iOS='15,40,15,0', Android='15,15,15,15'}">
 
-            <StackLayout
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
 
-                <StackLayout>
+                    <StackLayout>
 
-                    <Frame
-                        Margin="0,0,0,20"
-                        CornerRadius="15"
-                        BorderColor="#cb9ca1"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand">
-                        
-                        <StackLayout>
+                        <Frame
+                            Margin="0,0,0,20"
+                            CornerRadius="15"
+                            BorderColor="#cb9ca1"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
 
-                            <Label 
-                                Text="{Binding Population}"
-                                FontSize="35"
-                                FontAttributes="Bold"
-                                TextColor="#000000"
-                                HorizontalOptions="Start"/>
-                            
-                            <Label 
-                                HorizontalOptions="Start"
-                                Text="População"
-                                FontSize="20"
-                                FontAttributes="Bold"
-                                TextColor="#af4448"/>                           
+                            <StackLayout>
 
-                        </StackLayout>
-                    </Frame>
+                                <Label 
+                                    Text="{Binding Population}"
+                                    FontSize="35"
+                                    FontAttributes="Bold"
+                                    TextColor="#000000"
+                                    HorizontalOptions="Start"/>
 
+                                <Label 
+                                    HorizontalOptions="Start"
+                                    Text="População"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    TextColor="#af4448"/>
 
-                    <Frame
-                        Margin="0,0,0,20"
-                        CornerRadius="15"
-                        BorderColor="#cb9ca1"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand">
-
-                        <StackLayout>
-
-                            <Label 
-                                HorizontalOptions="Start"
-                                Text="{Binding NumberCases}"
-                                FontSize="35"
-                                FontAttributes="Bold"
-                                TextColor="#000000"/>
-                            
-                            <Label 
-                                HorizontalOptions="Start"
-                                Text="Casos confirmados"
-                                FontSize="20"
-                                FontAttributes="Bold"
-                                TextColor="#af4448"/>
-                            
-                        </StackLayout>
-                    </Frame>
-
-                    
-                    <Frame
-                        Margin="0,0,0,20"
-                        CornerRadius="15"
-                        BorderColor="#cb9ca1"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand">
-
-                        <StackLayout>
-
-                            <Label
-                                HorizontalOptions="Start"
-                                Text="{Binding NumberDeaths}"
-                                FontSize="35"
-                                FontAttributes="Bold"
-                                TextColor="#000000"/>
-
-                            <Label
-                                HorizontalOptions="Start"
-                                Text="Óbitos"
-                                FontSize="20"
-                                FontAttributes="Bold"
-                                TextColor="#af4448"/>                            
-                            
-                        </StackLayout>
-                    </Frame>
+                            </StackLayout>
+                        </Frame>
 
 
-                    <Frame
-                        Margin="0,0,0,20"
-                        CornerRadius="15"
-                        BorderColor="#cb9ca1"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand">
+                        <Frame
+                            Margin="0,0,0,20"
+                            CornerRadius="15"
+                            BorderColor="#cb9ca1"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
 
-                        <StackLayout>
+                            <StackLayout>
 
-                            <Label 
-                                HorizontalOptions="Start"
-                                Text="{Binding DeathsRate}"
-                                FontSize="35"
-                                FontAttributes="Bold"
-                                TextColor="#000000"/>
-                            
-                            <Label
-                                HorizontalOptions="Start"
-                                Text="Taxa de mortalidade"
-                                FontSize="20"
-                                FontAttributes="Bold"
-                                TextColor="#af4448"/>
-                            
-                        </StackLayout>
-                    </Frame>
+                                <Label 
+                                    HorizontalOptions="Start"
+                                    Text="{Binding NumberCases}"
+                                    FontSize="35"
+                                    FontAttributes="Bold"
+                                    TextColor="#000000"/>
 
-                    <Frame
-                        Margin="0,0,0,20"
-                        CornerRadius="15"
-                        BorderColor="#cb9ca1"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand">
+                                <Label 
+                                    HorizontalOptions="Start"
+                                    Text="Casos confirmados"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    TextColor="#af4448"/>
 
-                        <StackLayout >
+                            </StackLayout>
+                        </Frame>
 
-                            <Label 
-                                HorizontalOptions="Start"
-                                Text="{Binding DateUpdate}"
-                                FontSize="35"
-                                FontAttributes="Bold"
-                                TextColor="#000000"/>
-                            
-                            <Label
-                                HorizontalOptions="Start"
-                                Text="Última atualização"
-                                FontSize="20"
-                                FontAttributes="Bold"
-                                TextColor="#af4448"/>
-                            
-                        </StackLayout>
-                    </Frame>
+
+                        <Frame
+                            Margin="0,0,0,20"
+                            CornerRadius="15"
+                            BorderColor="#cb9ca1"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
+
+                            <StackLayout>
+
+                                <Label
+                                    HorizontalOptions="Start"
+                                    Text="{Binding NumberDeaths}"
+                                    FontSize="35"
+                                    FontAttributes="Bold"
+                                    TextColor="#000000"/>
+
+                                <Label
+                                    HorizontalOptions="Start"
+                                    Text="Óbitos"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    TextColor="#af4448"/>
+
+                            </StackLayout>
+                        </Frame>
+
+
+                        <Frame
+                            Margin="0,0,0,20"
+                            CornerRadius="15"
+                            BorderColor="#cb9ca1"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
+
+                            <StackLayout>
+
+                                <Label 
+                                    HorizontalOptions="Start"
+                                    Text="{Binding DeathsRate}"
+                                    FontSize="35"
+                                    FontAttributes="Bold"
+                                    TextColor="#000000"/>
+
+                                <Label
+                                    HorizontalOptions="Start"
+                                    Text="Taxa de mortalidade"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    TextColor="#af4448"/>
+
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame
+                            Margin="0,0,0,20"
+                            CornerRadius="15"
+                            BorderColor="#cb9ca1"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="CenterAndExpand">
+
+                            <StackLayout >
+
+                                <Label 
+                                    HorizontalOptions="Start"
+                                    Text="{Binding DateUpdate}"
+                                    FontSize="35"
+                                    FontAttributes="Bold"
+                                    TextColor="#000000"/>
+
+                                <Label
+                                    HorizontalOptions="Start"
+                                    Text="Última atualização"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    TextColor="#af4448"/>
+
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
                 </StackLayout>
-            </StackLayout>            
-        </StackLayout>
+            </StackLayout>
+        </StackLayout>        
     </ContentPage.Content>    
 </ContentPage>

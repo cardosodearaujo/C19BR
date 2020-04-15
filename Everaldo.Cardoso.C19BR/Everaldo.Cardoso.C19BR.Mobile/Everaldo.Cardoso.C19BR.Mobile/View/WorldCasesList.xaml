@@ -8,98 +8,103 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="Mundo">
+
     <ContentPage.Content>
-        <StackLayout
-            Margin="10,10,10,0"
-            IsVisible="{Binding IsNotBusy}">
+        <StackLayout>          
+        
+            <ActivityIndicator 
+                BackgroundColor="Transparent" 
+                VerticalOptions="Start" 
+                IsVisible="{Binding IsBusy}" 
+                IsRunning="{Binding IsBusy}"/>
 
             <StackLayout
-                Margin="10,0,0,0">
+                Margin="10,10,10,0"
+                IsVisible="{Binding IsNotBusy}">
 
-                <Grid  ColumnSpacing="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="115" />
-                        <ColumnDefinition Width="65"/>
-                        <ColumnDefinition Width="65"/>
-                        <ColumnDefinition Width="65"/>
-                        <ColumnDefinition Width="65"/>
-                    </Grid.ColumnDefinitions>
+                <StackLayout
+                    Margin="10,0,0,0">
 
-                    <Label Text="País" FontAttributes="Bold" TextColor="Black" Grid.Column="0"/>
-                    <Label Text="Confirmados" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="1"/>
-                    <Label Text="Recuperados" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="2"/>
-                    <Label Text="Óbitos" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="3"/>
-                    <Label Text="Mortalidade" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="4"/>
-                </Grid>
+                    <Grid  ColumnSpacing="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="115" />
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                            <ColumnDefinition Width="65"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="País" FontAttributes="Bold" TextColor="Black" Grid.Column="0"/>
+                        <Label Text="Confirmados" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="1"/>
+                        <Label Text="Recuperados" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="2"/>
+                        <Label Text="Óbitos" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="3"/>
+                        <Label Text="Mortalidade" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="4"/>
+                    </Grid>
+                </StackLayout>
+
+                <ListView
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding List}"
+                    SelectedItem="{Binding SelectedItem}"
+                    SeparatorVisibility="Default">
+                    <ListView.ItemTemplate >
+                        <DataTemplate >
+                            <ViewCell >
+                                <StackLayout 
+                                    Margin="10"
+                                    Orientation="Horizontal">
+
+                                    <Grid  ColumnSpacing="2">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="115" />
+                                            <ColumnDefinition Width="65"/>
+                                            <ColumnDefinition Width="65"/>
+                                            <ColumnDefinition Width="65"/>
+                                            <ColumnDefinition Width="65"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label
+                                            Grid.Column="0"
+                                            FontSize="18"
+                                            TextColor="#af4448"
+                                            Text="{Binding Name}" 
+                                            FontAttributes="Bold" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="{Binding Confirmed}" />
+
+                                        <Label
+                                            Grid.Column="2"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="{Binding Recovered}" />
+
+                                        <Label
+                                            Grid.Column="3"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="{Binding Deaths}" />
+
+                                        <Label
+                                            Grid.Column="4"
+                                            FontSize="18"
+                                            HorizontalTextAlignment="End"
+                                            HorizontalOptions="End"
+                                            Text="{Binding DeathRate}" />
+
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
-
-
-
-            <ListView
-                HasUnevenRows="True"
-                ItemsSource="{Binding List}"
-                SelectedItem="{Binding SelectedItem}"
-                SeparatorVisibility="Default">
-                <ListView.ItemTemplate >
-                    <DataTemplate >
-                        <ViewCell >
-                            <StackLayout 
-                                Margin="10"
-                                Orientation="Horizontal">
-
-                                <Grid  ColumnSpacing="2">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="115" />
-                                        <ColumnDefinition Width="65"/>
-                                        <ColumnDefinition Width="65"/>
-                                        <ColumnDefinition Width="65"/>
-                                        <ColumnDefinition Width="65"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Label
-                                        Grid.Column="0"
-                                        FontSize="18"
-                                        TextColor="#af4448"
-                                        Text="{Binding Name}" 
-                                        FontAttributes="Bold" />
-
-                                    <Label
-                                        Grid.Column="1"
-                                        FontSize="18"
-                                        HorizontalTextAlignment="End"
-                                        HorizontalOptions="EndAndExpand"
-                                        Text="{Binding Confirmed}" />
-
-                                    <Label
-                                        Grid.Column="2"
-                                        FontSize="18"
-                                        HorizontalTextAlignment="End"
-                                        HorizontalOptions="EndAndExpand"
-                                        Text="{Binding Recovered}" />
-
-                                    <Label
-                                        Grid.Column="3"
-                                        FontSize="18"
-                                        HorizontalTextAlignment="End"
-                                        HorizontalOptions="EndAndExpand"
-                                        Text="{Binding Deaths}" />
-
-                                    <Label
-                                        Grid.Column="4"
-                                        FontSize="18"
-                                        HorizontalTextAlignment="End"
-                                        HorizontalOptions="End"
-                                        Text="{Binding DeathRate}" />
-
-                                </Grid>
-
-
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
