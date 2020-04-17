@@ -40,7 +40,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             }
             catch (Exception ex)
             {
-                UserDialogs.Instance.Toast(ex.Message, TimeSpan.FromSeconds(3));
+                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(3));
             }
             finally
             {
@@ -48,13 +48,23 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             }            
         }
 
-        private void DetailItem(ItemSearchListVO item)
+        private async void DetailItem(ItemSearchListVO item)
         {
             if (item != null)
             {
-                //Abrir nova tela...
-                //Application.Current.MainPage = new NavigationPage(new Menu()) { BarBackgroundColor = Color.FromHex("#03A9F4") };
-                UserDialogs.Instance.Toast("Você selecionou o estado: " + item.Name, TimeSpan.FromSeconds(10));
+                var states = StatesOfBrazil.getStatesOfBrazil();
+                var stade = states.Where(F => F.Name == item.Name).FirstOrDefault();
+                if (stade != null)
+                {
+                    var pairs = new NavigationParameters();
+                    pairs.Add("UF", stade.UF);
+                    pairs.Add("State", stade.Name);
+                    await NavigationService.NavigateAsync("NavigationPage/CityCasesList", pairs, animated: true);
+                }
+                else
+                {
+                    Dialog.Toast("Nenhum estado selecioando!", TimeSpan.FromSeconds(5));
+                }                            
             }
         }
 

@@ -30,6 +30,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile
             containerRegistry.RegisterForNavigation<CountryDetail, CountryDetailViewModel>();
             containerRegistry.RegisterForNavigation<StatesCasesList, StatesCasesListViewModel>();
             containerRegistry.RegisterForNavigation<WorldCasesList, WorldCasesListViewModel>();
+            containerRegistry.RegisterForNavigation<CityCasesList, CityCasesListViewModel>();
         }
 
         protected async override void OnInitialized()

@@ -14,9 +14,9 @@
         
             <ActivityIndicator 
                 BackgroundColor="Transparent" 
-                VerticalOptions="Start" 
                 IsVisible="{Binding IsBusy}" 
-                IsRunning="{Binding IsBusy}"/>
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="CenterAndExpand"/>
 
             <StackLayout
                 Margin="10,10,10,0"

@@ -2,6 +2,7 @@
 using Everaldo.Cardoso.C19BR.Domain.Services;
 using Everaldo.Cardoso.C19BR.Domain.ValueObjects;
 using Everaldo.Cardoso.C19BR.Framework.Bases;
+using Everaldo.Cardoso.C19BR.Framework.ToolBox;
 using Everaldo.Cardoso.C19BR.Framework.Translation;
 using Prism.Navigation;
 using Prism.Services;
@@ -42,7 +43,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             }
             catch (Exception ex)
             {
-                UserDialogs.Instance.Toast(ex.Message, TimeSpan.FromSeconds(3));
+                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(3));
             }
             finally
             {
@@ -63,11 +64,13 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             var cases = await casesService.GetCasesFromWorld();
             if (cases != null)
             {
+                var countries = CountriesOfWorld.getCountriesOfWorld();
+
                 var lista = (from pais in cases.data
                         orderby (pais.latest_data.confirmed == null ? 0 : (long)pais.latest_data.confirmed) descending
                         select new ItemSearchListVO
                         {
-                            Name =  pais.name.ToUpper(),
+                            Name = countries.Where(F => F.NameEn == pais.name.ToUpper()).FirstOrDefault().NamePT.ToUpper(), //Converte o nome de inglês para português localmente...
                             Confirmed = string.Format("{0:N0}", (pais.latest_data.confirmed == null ? 0 : (long)pais.latest_data.confirmed)),
                             Recovered = string.Format("{0:N0}", (pais.latest_data.recovered == null ? 0 : (long)pais.latest_data.recovered)),
                             Deaths = string.Format("{0:N0}", (pais.latest_data.deaths == null ? 0 : (long)pais.latest_data.deaths)),
@@ -76,16 +79,15 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 
                 if (AtivarTraducao)
                 {
-                    //Traduz até 2 milhões de caracteres por mês (modo gratuito)
+                    //Traduz até 2 milhões de caracteres por mês (modo gratuito)                    
                     var translationService = new TextTranslationService(new AuthenticationService(TranslationConstants.TextTranslatorApiKey));
                     foreach (var item in lista)
                     {
                         item.Name = await translationService.TranslateTextAsync(item.Name);
-                        item.Name = item.Name.ToUpper();
                     }
-                }                
+                }
 
-                List = lista;
+                List = lista; 
             }
         }
         #endregion

@@ -12,10 +12,10 @@
         <StackLayout>
             
             <ActivityIndicator 
-                BackgroundColor="Transparent" 
-                VerticalOptions="Start" 
+                BackgroundColor="Transparent"                 
                 IsVisible="{Binding IsBusy}" 
-                IsRunning="{Binding IsBusy}"/>
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="CenterAndExpand"/>
             
             <StackLayout 
                 IsVisible="{Binding IsNotBusy}"

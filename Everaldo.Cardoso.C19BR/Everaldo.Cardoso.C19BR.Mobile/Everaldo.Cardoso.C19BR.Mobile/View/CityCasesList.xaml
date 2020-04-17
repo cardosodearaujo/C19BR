@@ -4,10 +4,10 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.StatesCasesList"
+             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.CityCasesList"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
              prism:ViewModelLocator.AutowireViewModel="True"
-             Title="Estados">
+             Title="{Binding Title}">
 
     <ContentPage.Content>
         <StackLayout>
@@ -33,17 +33,16 @@
                             <ColumnDefinition Width="65"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Text="Estado" FontAttributes="Bold" TextColor="Black" Grid.Column="0"/>
+                        <Label Text="Cidade" FontAttributes="Bold" TextColor="Black" Grid.Column="0"/>
                         <Label Text="Confirmados" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="1"/>
                         <Label Text="Óbitos" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="2"/>
                         <Label Text="Mortalidade" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="3"/>
                     </Grid>
                 </StackLayout>
-                
+
                 <ListView
                     HasUnevenRows="True"
                     ItemsSource="{Binding List}"
-                    SelectedItem="{Binding SelectedItem}"
                     SeparatorVisibility="Default">
                     <ListView.ItemTemplate >
                         <DataTemplate >
@@ -95,6 +94,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-        </StackLayout>   
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

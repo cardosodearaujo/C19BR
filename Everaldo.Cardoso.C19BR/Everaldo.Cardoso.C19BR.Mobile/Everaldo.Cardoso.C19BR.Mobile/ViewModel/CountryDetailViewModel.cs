@@ -1,5 +1,4 @@
-﻿using Acr.UserDialogs;
-using Everaldo.Cardoso.C19BR.Domain.Services;
+﻿using Everaldo.Cardoso.C19BR.Domain.Services;
 using Everaldo.Cardoso.C19BR.Framework.Bases;
 using Prism.Navigation;
 using Prism.Services;
@@ -94,7 +93,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             }
             catch (Exception ex)
             {
-                UserDialogs.Instance.Toast(ex.Message, TimeSpan.FromSeconds(3));
+                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(3));
             }
             finally
             {
@@ -104,17 +103,19 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 
         private async void LoadData()
         {
+            IsBusy = true;
             try
-            {
-                using (UserDialogs.Instance.Loading(title: "Carregando dados do Brasil...", show: true, maskType: MaskType.Gradient))
-                {
-                    await LoadDataCountry();
-                }
+            {                
+                await LoadDataCountry();                
             }
             catch (Exception ex)
             {
-                UserDialogs.Instance.Toast(ex.Message, TimeSpan.FromSeconds(3));
-            }            
+                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(3));
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
 
         private async Task LoadDataCountry()
