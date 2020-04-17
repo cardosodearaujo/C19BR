@@ -2619,6 +2619,7 @@ namespace Everaldo.Cardoso.Araujo.C19BR.Mobile.Droid
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahText = global::Everaldo.Cardoso.Araujo.C19BR.Mobile.Droid.Resource.Styleable.ProgressWheel_ahText;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextColor = global::Everaldo.Cardoso.Araujo.C19BR.Mobile.Droid.Resource.Styleable.ProgressWheel_ahTextColor;
 			global::AndroidHUD.Resource.Styleable.ProgressWheel_ahTextSize = global::Everaldo.Cardoso.Araujo.C19BR.Mobile.Droid.Resource.Styleable.ProgressWheel_ahTextSize;
+			global::Microcharts.Droid.Resource.String.library_name = global::Everaldo.Cardoso.Araujo.C19BR.Mobile.Droid.Resource.String.library_name;
 			global::Prism.Resource.Animation.abc_fade_in = global::Everaldo.Cardoso.Araujo.C19BR.Mobile.Droid.Resource.Animation.abc_fade_in;
 			global::Prism.Resource.Animation.abc_fade_out = global::Everaldo.Cardoso.Araujo.C19BR.Mobile.Droid.Resource.Animation.abc_fade_out;
 			global::Prism.Resource.Animation.abc_grow_fade_in_from_bottom = global::Everaldo.Cardoso.Araujo.C19BR.Mobile.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
