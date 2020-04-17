@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.CasesTodayCountriesDetail">
+
+
+    <Frame CornerRadius="15" Margin="12" Padding="24" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout>
+            <Label Text="Dados de hoje" FontAttributes="Bold" FontSize="20"/>
+
+            <StackLayout Orientation="Vertical">
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="+" TextColor="#af4448"/>
+                    <Label x:Name="lblConfirmedToday" TextColor="#af4448"/>
+                    <Label Text="confirmados" TextColor="#af4448"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="+" TextColor="#af4448"/>
+                    <Label x:Name="lblDeathsToday" TextColor="#af4448"/>
+                    <Label Text="mortos" TextColor="#af4448"/>
+                </StackLayout>
+                
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</pages:PopupPage>

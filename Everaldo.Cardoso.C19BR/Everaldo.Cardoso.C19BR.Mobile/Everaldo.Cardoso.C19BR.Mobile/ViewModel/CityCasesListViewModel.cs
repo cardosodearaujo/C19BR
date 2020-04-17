@@ -4,6 +4,7 @@ using Everaldo.Cardoso.C19BR.Domain.ValueObjects;
 using Everaldo.Cardoso.C19BR.Framework.Bases;
 using Everaldo.Cardoso.C19BR.Framework.Enums;
 using Everaldo.Cardoso.C19BR.Framework.ToolBox;
+using Everaldo.Cardoso.C19BR.Mobile.Services;
 using Prism.Navigation;
 using Prism.Services;
 using System;
@@ -11,6 +12,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 {
@@ -27,6 +29,23 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             get { return _List; }
             set { SetProperty(ref _List, value); }
         }
+
+        private Command _Refresh;
+        public Command Refresh
+        {
+            get { return _Refresh; }
+            set { SetProperty(ref _Refresh, value); }
+        }
+
+        private bool _IsRefreshing;
+        public bool IsRefreshing
+        {
+            get { return _IsRefreshing; }
+            set { SetProperty(ref _IsRefreshing, value); }
+        }
+
+        public States AtualState { get; set; }
+
         #endregion
 
         #region "Metodos"
@@ -37,13 +56,20 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             {
                 if (parameters["State"] != null && parameters["UF"] != null)
                 {
-                    Title = "Estado: " + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(parameters["State"].ToString().ToLower()); 
-                    await LoadData((States)EnumUtility.GetEnumByValue<States>(parameters["UF"].ToString()));
+                    Title = "Estado: " + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(parameters["State"].ToString().ToLower());
+                    AtualState = (States)EnumUtility.GetEnumByValue<States>(parameters["UF"].ToString());
+                    await LoadDataCity(AtualState);
+                    Refresh = new Command(LoadData);
                 }
+                else
+                {
+                    Xamarin.Forms.DependencyService.Get<ICloseService>().Close();
+                }
+                
             }
             catch (Exception ex)
             {
-                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(3));
+                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(5));
             }
             finally
             {
@@ -51,7 +77,25 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             }
         }
 
-        private async Task LoadData(States state)
+        private async void LoadData()
+        {
+            IsRefreshing = true;
+            try
+            {
+                await LoadDataCity(AtualState);
+            }
+            catch (Exception ex)
+            {
+                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(5));
+            }
+            finally
+            {
+                IsRefreshing = false;
+            }
+        }
+
+
+        private async Task LoadDataCity(States state)
         {
             var service = new CasesBrasilService();
             var cases = await service.GetCasesFromCity(state);

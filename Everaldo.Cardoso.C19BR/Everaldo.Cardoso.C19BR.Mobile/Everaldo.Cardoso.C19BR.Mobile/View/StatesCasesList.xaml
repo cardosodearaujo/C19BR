@@ -41,6 +41,9 @@
                 </StackLayout>
                 
                 <ListView
+                    IsPullToRefreshEnabled="True"
+                    RefreshCommand="{Binding Refresh}"
+                    IsRefreshing="{Binding IsRefreshing}"
                     HasUnevenRows="True"
                     ItemsSource="{Binding List}"
                     SelectedItem="{Binding SelectedItem}"

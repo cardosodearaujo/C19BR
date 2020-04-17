@@ -17,14 +17,6 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
         }
 
         #region "Propriedades"
-        public Command _UpdateData;
-        public Command UpdateData
-        {
-            get { return _UpdateData; }
-            set { SetProperty(ref _UpdateData, value); }
-        }
-
-
         public Command _ListStates;
         public Command ListStates
         {
@@ -79,6 +71,20 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             get { return _DateUpdate; }
             set { SetProperty(ref _DateUpdate, value); }
         }
+
+        private Command _Refresh;
+        public Command Refresh
+        {
+            get { return _Refresh; }
+            set { SetProperty(ref _Refresh, value); }
+        }
+
+        private bool _IsRefreshing;
+        public bool IsRefreshing
+        {
+            get { return _IsRefreshing; }
+            set { SetProperty(ref _IsRefreshing, value); }
+        }
         #endregion
 
         #region "Metodos"
@@ -87,13 +93,13 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             IsBusy = true;
             try
             {
-                UpdateData = new Command(LoadData);
+                Refresh = new Command(LoadData);
                 ListStates = new Command(OpenListStates);
                 await LoadDataCountry();                
             }
             catch (Exception ex)
             {
-                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(3));
+                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(5));
             }
             finally
             {
@@ -103,18 +109,18 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 
         private async void LoadData()
         {
-            IsBusy = true;
+            IsRefreshing = true;
             try
             {                
                 await LoadDataCountry();                
             }
             catch (Exception ex)
             {
-                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(3));
+                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(5));
             }
             finally
             {
-                IsBusy = false;
+                IsRefreshing = false;
             }
         }
 

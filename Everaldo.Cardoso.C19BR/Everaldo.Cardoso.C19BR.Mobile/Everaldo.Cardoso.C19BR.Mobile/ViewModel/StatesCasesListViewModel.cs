@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 {
@@ -27,6 +28,20 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             set { SetProperty(ref _List, value); }
         }
 
+        private Command _Refresh;
+        public Command Refresh
+        {
+            get { return _Refresh; }
+            set { SetProperty(ref _Refresh, value); }
+        }
+
+        private bool _IsRefreshing;
+        public bool IsRefreshing
+        {
+            get { return _IsRefreshing; }
+            set { SetProperty(ref _IsRefreshing, value); }
+        }
+
         public ItemSearchListVO SelectedItem { set { DetailItem(value); } }
         #endregion
 
@@ -36,11 +51,12 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             IsBusy = true;
             try
             {
-                await LoadData();
+                Refresh = new Command(LoadData);
+                await LoadDataStates();
             }
             catch (Exception ex)
             {
-                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(3));
+                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(5));
             }
             finally
             {
@@ -68,7 +84,24 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             }
         }
 
-        private async Task LoadData()
+        private async void LoadData()
+        {
+            IsRefreshing = true;
+            try
+            {
+                await LoadDataStates();
+            }
+            catch (Exception ex)
+            {
+                Dialog.Toast(ex.Message, TimeSpan.FromSeconds(5));
+            }
+            finally
+            {
+                IsRefreshing = false;
+            }
+        }
+
+        private async Task LoadDataStates()
         {
             var service = new CasesBrasilService();
             var cases = await service.GetCasesFromStates();

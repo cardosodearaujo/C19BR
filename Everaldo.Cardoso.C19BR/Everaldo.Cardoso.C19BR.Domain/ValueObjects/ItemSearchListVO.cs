@@ -7,5 +7,7 @@
         public string Recovered { get; set; }
         public string Deaths { get; set; }
         public string DeathRate { get; set; }
+        public string DeathsToday { get; set; }
+        public string ConfirmedToday { get; set; }
     }
 }
