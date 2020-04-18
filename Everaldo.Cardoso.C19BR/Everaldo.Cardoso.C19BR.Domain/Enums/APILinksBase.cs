@@ -8,7 +8,7 @@ namespace Everaldo.Cardoso.C19BR.Domain.Enums
         Casos,
         [EnumValue("https://brasil.io/api/dataset/covid19/boletim/data")]
         Boletins,
-        [EnumValue(" https://corona-api.com/countries ")]
+        [EnumValue(" https://corona-api.com/countries")]
         CasosMundiais
     }
 }

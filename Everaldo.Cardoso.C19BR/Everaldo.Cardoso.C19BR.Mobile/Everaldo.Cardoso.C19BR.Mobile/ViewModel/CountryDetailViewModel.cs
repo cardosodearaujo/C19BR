@@ -1,4 +1,5 @@
 ﻿using Everaldo.Cardoso.C19BR.Domain.Services;
+using Everaldo.Cardoso.C19BR.Domain.ValueObjects;
 using Everaldo.Cardoso.C19BR.Framework.Bases;
 using Prism.Navigation;
 using Prism.Services;
@@ -40,6 +41,12 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             set { SetProperty(ref _Population, value); }
         }
 
+        private string _Recovered;
+        public string Recovered
+        {
+            get { return _Recovered; }
+            set { SetProperty(ref _Recovered, value); }
+        }
 
         private string _NumberDeaths;
         public string NumberDeaths
@@ -63,7 +70,27 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             get { return _DeathsRate; }
             set { SetProperty(ref _DeathsRate, value); }
         }
-        
+
+        private string _Critical;
+        public string Critical
+        {
+            get { return _Critical; }
+            set { SetProperty(ref _Critical, value); }
+        }
+
+        private string _ConfirmedToday;
+        public string ConfirmedToday
+        {
+            get { return _ConfirmedToday; }
+            set { SetProperty(ref _ConfirmedToday, value); }
+        }
+
+        private string _DeathsToday;
+        public string DeathsToday
+        {
+            get { return _DeathsToday; }
+            set { SetProperty(ref _DeathsToday, value); }
+        }
 
         private string _DateUpdate;
         public string DateUpdate
@@ -94,7 +121,6 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             try
             {
                 Refresh = new Command(LoadData);
-                ListStates = new Command(OpenListStates);
                 await LoadDataCountry();                
             }
             catch (Exception ex)
@@ -126,23 +152,24 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 
         private async Task LoadDataCountry()
         {            
-            var service = new CasesBrasilService();
-            var cases = await service.GetCasesFromStates();
+            var service = new CasesWorldService();
+            var cases = await service.GetCasesFromBrasil();
 
-            if (cases != null)
+            if (cases != null && cases.data != null)
             {
-                Location = "Brasil";
-                Population = string.Format("{0:N0}", cases.results.Select(F => F.estimated_population_2019).Sum());
-                NumberCases = string.Format("{0:N0}", cases.results.Select(F => F.confirmed).Sum());
-                NumberDeaths = string.Format("{0:N0}", cases.results.Select(F => F.deaths).Sum());
-                DeathsRate = string.Format("{0:N1}", (decimal.Parse(NumberDeaths) * 100) / decimal.Parse(NumberCases)) + "%";
-                DateUpdate = cases.results.Max(F => F.date).ToString("dd/MM/yyyy");
-            }            
-        }
+                var data = cases.data;
 
-        private async void OpenListStates()
-        {
-            await NavigationService.NavigateAsync("NavigationPage/SearchList", animated: true);
+                Location = "Brasil";
+                Recovered = string.Format("{0:N0}", data.latest_data.recovered);
+                NumberCases = string.Format("{0:N0}", data.latest_data.confirmed);
+                NumberDeaths = string.Format("{0:N0}", data.latest_data.deaths);
+                Critical = string.Format("{0:N0}", data.latest_data.critical);
+                Population = string.Format("{0:N0}", data.population);
+                ConfirmedToday = string.Format("{0:N0}", data.today.confirmed);
+                DeathsToday = string.Format("{0:N0}", data.today.deaths);
+                DeathsRate = string.Format("{0:N1}", (data.latest_data.calculated.death_rate)) + "%";
+                DateUpdate = data.updated_at.ToString("dd/MM/yyyy");
+            }            
         }
         #endregion
     }
