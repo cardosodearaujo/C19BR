@@ -22,6 +22,8 @@
                 IsVisible="{Binding IsNotBusy}" 
                 HorizontalOptions="FillAndExpand" 
                 VerticalOptions="FillAndExpand" 
+                HeightRequest="1000"
+                WidthRequest="1000"
                 Source="{Binding WebViewSource}"/>
             
         </StackLayout>

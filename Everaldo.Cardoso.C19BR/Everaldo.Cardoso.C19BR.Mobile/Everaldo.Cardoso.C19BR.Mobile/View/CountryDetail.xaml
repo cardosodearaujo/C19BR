@@ -72,7 +72,7 @@
                                         <Label 
                                             HorizontalOptions="Start"
                                             Text="{Binding Population}"
-                                            FontSize="{OnPlatform iOS='23', Android='25'}"
+                                            FontSize="{OnPlatform iOS='20', Android='25'}"
                                             FontAttributes="Bold"
                                             TextColor="#000000"/>
 
@@ -99,18 +99,18 @@
                                     <StackLayout>
 
                                         <Label 
-                                        HorizontalOptions="Start"
-                                        Text="{Binding NumberCases}"
-                                        FontSize="{OnPlatform iOS='23', Android='25'}"
-                                        FontAttributes="Bold"
-                                        TextColor="#000000"/>
+                                            HorizontalOptions="Start"
+                                            Text="{Binding NumberCases}"
+                                            FontSize="{OnPlatform iOS='20', Android='25'}"
+                                            FontAttributes="Bold"
+                                            TextColor="#000000"/>
 
                                         <Label 
-                                        HorizontalOptions="Start"
-                                        Text="Confirmados"
-                                        FontSize="15"
-                                        FontAttributes="Bold"
-                                        TextColor="#af4448"/>
+                                            HorizontalOptions="Start"
+                                            Text="Confirmados"
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            TextColor="#af4448"/>
 
                                     </StackLayout>
                                 </Frame>
@@ -128,18 +128,18 @@
                                     <StackLayout>
 
                                         <Label 
-                                        Text="{Binding Recovered}"
-                                        FontSize="{OnPlatform iOS='23', Android='25'}"
-                                        FontAttributes="Bold"
-                                        TextColor="#000000"
-                                        HorizontalOptions="Start"/>
+                                            Text="{Binding Recovered}"
+                                            FontSize="{OnPlatform iOS='20', Android='25'}"
+                                            FontAttributes="Bold"
+                                            TextColor="#000000"
+                                            HorizontalOptions="Start"/>
 
                                         <Label 
-                                        HorizontalOptions="Start"
-                                        Text="Recuperados"
-                                        FontSize="15"
-                                        FontAttributes="Bold"
-                                        TextColor="#af4448"/>
+                                            HorizontalOptions="Start"
+                                            Text="Recuperados"
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            TextColor="#af4448"/>
 
                                     </StackLayout>
                                 </Frame>
@@ -157,18 +157,18 @@
                                     <StackLayout >
 
                                         <Label 
-                                        HorizontalOptions="Start"
-                                        Text="{Binding Critical}"
-                                        FontSize="{OnPlatform iOS='23', Android='25'}"
-                                        FontAttributes="Bold"
-                                        TextColor="#000000"/>
+                                            HorizontalOptions="Start"
+                                            Text="{Binding Critical}"
+                                            FontSize="{OnPlatform iOS='20', Android='25'}"
+                                            FontAttributes="Bold"
+                                            TextColor="#000000"/>
 
                                         <Label
-                                        HorizontalOptions="Start"
-                                        Text="Estado crítico"
-                                        FontSize="15"
-                                        FontAttributes="Bold"
-                                        TextColor="#af4448"/>
+                                            HorizontalOptions="Start"
+                                            Text="Estado crítico"
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            TextColor="#af4448"/>
 
                                     </StackLayout>
                                 </Frame>
@@ -186,23 +186,23 @@
                                     <StackLayout>
 
                                         <Label
-                                        HorizontalOptions="Start"
-                                        Text="{Binding NumberDeaths}"
-                                        FontSize="{OnPlatform iOS='23', Android='25'}"
-                                        FontAttributes="Bold"
-                                        TextColor="#000000"/>
+                                            HorizontalOptions="Start"
+                                            Text="{Binding NumberDeaths}"
+                                            FontSize="{OnPlatform iOS='20', Android='25'}"
+                                            FontAttributes="Bold"
+                                            TextColor="#000000"/>
 
                                         <Label
-                                        HorizontalOptions="Start"
-                                        Text="Óbitos"
-                                        FontSize="15"
-                                        FontAttributes="Bold"
-                                        TextColor="#af4448"/>
+                                            HorizontalOptions="Start"
+                                            Text="Óbitos"
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            TextColor="#af4448"/>
 
                                     </StackLayout>
                                 </Frame>
 
-                                <!--Mortalidade-->
+                                <!--Letalidade-->
                                 <Frame
                                     Grid.Column="1"
                                     Grid.Row="2"
@@ -215,18 +215,18 @@
                                     <StackLayout>
 
                                         <Label 
-                                        HorizontalOptions="Start"
-                                        Text="{Binding DeathsRate}"
-                                        FontSize="{OnPlatform iOS='23', Android='25'}"
-                                        FontAttributes="Bold"
-                                        TextColor="#000000"/>
+                                            HorizontalOptions="Start"
+                                            Text="{Binding DeathsRate}"
+                                            FontSize="{OnPlatform iOS='20', Android='25'}"
+                                            FontAttributes="Bold"
+                                            TextColor="#000000"/>
 
                                         <Label
-                                        HorizontalOptions="Start"
-                                        Text="Mortalidade"
-                                        FontSize="15"
-                                        FontAttributes="Bold"
-                                        TextColor="#af4448"/>
+                                            HorizontalOptions="Start"
+                                            Text="Letalidade"
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            TextColor="#af4448"/>
 
                                     </StackLayout>
                                 </Frame>
@@ -285,14 +285,14 @@
                                             <Label 
                                                 HorizontalOptions="Start"
                                                 Text="+"
-                                                FontSize="{OnPlatform iOS='23', Android='25'}"
+                                                FontSize="{OnPlatform iOS='20', Android='25'}"
                                                 FontAttributes="Bold"
                                                 TextColor="#000000"/>
 
                                             <Label 
                                                 HorizontalOptions="Start"
                                                 Text="{Binding ConfirmedToday}"
-                                                FontSize="{OnPlatform iOS='23', Android='25'}"
+                                                FontSize="{OnPlatform iOS='20', Android='25'}"
                                                 FontAttributes="Bold"
                                                 TextColor="#000000"/>
                                             
@@ -326,14 +326,14 @@
                                             <Label 
                                                 HorizontalOptions="Start"
                                                 Text="+"
-                                                FontSize="{OnPlatform iOS='23', Android='25'}"
+                                                FontSize="{OnPlatform iOS='20', Android='25'}"
                                                 FontAttributes="Bold"
                                                 TextColor="#000000"/>
 
                                             <Label 
                                                 HorizontalOptions="Start"
                                                 Text="{Binding DeathsToday}"
-                                                FontSize="{OnPlatform iOS='23', Android='25'}"
+                                                FontSize="{OnPlatform iOS='20', Android='25'}"
                                                 FontAttributes="Bold"
                                                 TextColor="#000000"/>
 

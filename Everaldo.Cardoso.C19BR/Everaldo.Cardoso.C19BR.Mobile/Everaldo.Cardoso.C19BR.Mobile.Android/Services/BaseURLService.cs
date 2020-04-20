@@ -9,7 +9,7 @@ namespace Everaldo.Cardoso.Araujo.C19BR.Mobile.Droid.Services
     {
         public string Get()
         {
-            return "file:///android_asset/";
+            return "file:///android_asset";
         }
     }
 }

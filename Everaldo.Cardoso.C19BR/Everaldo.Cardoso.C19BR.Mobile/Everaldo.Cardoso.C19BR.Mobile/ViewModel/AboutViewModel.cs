@@ -12,7 +12,6 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
         public AboutViewModel(INavigationService navigationService, IPageDialogService pageDialogService) : base(navigationService, pageDialogService)
         {
         }
-        
 
         #region "Propriedades"
         private WebViewSource _WebViewSource;
@@ -29,7 +28,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             IsBusy = true;
             try
             {
-                WebViewSource = Xamarin.Forms.DependencyService.Get<IBaseURLService>().Get() + "info.html";
+                WebViewSource = Xamarin.Forms.DependencyService.Get<IBaseURLService>().Get() + "/info.html";
             }
             catch (Exception ex)
             {
@@ -38,7 +37,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             finally
             {
                 IsBusy = false;
-            }            
+            }
         }
         #endregion
     }

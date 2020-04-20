@@ -36,5 +36,7 @@
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>Covid-19 Brasil</string>
+  <key>NSAllowsArbitraryLoads</key>
+  <true/>
 </dict>
 </plist>

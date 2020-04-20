@@ -23,22 +23,22 @@
                 IsVisible="{Binding IsNotBusy}">
 
                 <StackLayout
-                    Margin="10,0,0,0">
+                    Margin="10,0,10,0">
 
                     <Grid  ColumnSpacing="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="{OnPlatform iOS='115', Android='115'}" />
-                            <ColumnDefinition Width="{OnPlatform iOS='65', Android='65'}"/>
-                            <ColumnDefinition Width="{OnPlatform iOS='65', Android='65'}"/>
-                            <ColumnDefinition Width="{OnPlatform iOS='65', Android='65'}"/>
-                            <ColumnDefinition Width="{OnPlatform iOS='65', Android='65'}"/>
+                            <ColumnDefinition Width="115*"/>
+                            <ColumnDefinition Width="65*"/>
+                            <ColumnDefinition Width="65*"/>
+                            <ColumnDefinition Width="65*"/>
+                            <ColumnDefinition Width="65*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Text="País" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" Grid.Column="0"/>
-                        <Label Text="Confirmados" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Grid.Column="1"/>
-                        <Label Text="Recuperados" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Grid.Column="2"/>
-                        <Label Text="Óbitos" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Grid.Column="3"/>
-                        <Label Text="Letalidade" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" Grid.Column="4"/>
+                        <Label Text="País" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0"/>
+                        <Label Text="Confirmados" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1"/>
+                        <Label Text="Recuperados" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="2"/>
+                        <Label Text="Óbitos" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="3"/>
+                        <Label Text="Letalidade" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalTextAlignment="End" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="4"/>
                     </Grid>
                 </StackLayout>
 
@@ -59,11 +59,11 @@
 
                                     <Grid  ColumnSpacing="2" >
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="{OnPlatform iOS='115', Android='115'}" />
-                                            <ColumnDefinition Width="{OnPlatform iOS='65', Android='65'}"/>
-                                            <ColumnDefinition Width="{OnPlatform iOS='65', Android='65'}"/>
-                                            <ColumnDefinition Width="{OnPlatform iOS='65', Android='65'}"/>
-                                            <ColumnDefinition Width="{OnPlatform iOS='65', Android='65'}"/>
+                                            <ColumnDefinition Width="115*"/>
+                                            <ColumnDefinition Width="65*"/>
+                                            <ColumnDefinition Width="65*"/>
+                                            <ColumnDefinition Width="65*"/>
+                                            <ColumnDefinition Width="65*"/>
                                         </Grid.ColumnDefinitions>
 
                                         <Label
@@ -71,35 +71,42 @@
                                             FontSize="{OnPlatform iOS='15', Android='18'}"
                                             TextColor="#af4448"
                                             Text="{Binding Name}" 
-                                            FontAttributes="Bold" />
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="Start"/>
 
                                         <Label
                                             Grid.Column="1"
                                             FontSize="{OnPlatform iOS='15', Android='18'}"
-                                            HorizontalTextAlignment="End"
-                                            HorizontalOptions="EndAndExpand"
-                                            Text="{Binding Confirmed}" />
+                                            Text="{Binding Confirmed}"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="End"/>
 
                                         <Label
                                             Grid.Column="2"
                                             FontSize="{OnPlatform iOS='15', Android='18'}"
-                                            HorizontalTextAlignment="End"
-                                            HorizontalOptions="EndAndExpand"
-                                            Text="{Binding Recovered}" />
+                                            Text="{Binding Recovered}"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="End"/>
 
                                         <Label
                                             Grid.Column="3"
                                             FontSize="{OnPlatform iOS='15', Android='18'}"
-                                            HorizontalTextAlignment="End"
-                                            HorizontalOptions="EndAndExpand"
-                                            Text="{Binding Deaths}" />
+                                            Text="{Binding Deaths}"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="End"/>
 
                                         <Label
                                             Grid.Column="4"
                                             FontSize="{OnPlatform iOS='15', Android='18'}"
-                                            HorizontalTextAlignment="End"
-                                            HorizontalOptions="End"
-                                            Text="{Binding DeathRate}" />
+                                            Text="{Binding DeathRate}"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand"
+                                            HorizontalTextAlignment="End"/>
 
                                     </Grid>
                                 </StackLayout>
