@@ -249,7 +249,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                     LineSize = 3,
                     PointMode = PointMode.Circle,
                     PointSize = 10,
-                    LabelTextSize = 20,
+                    LabelTextSize = 18,
                     BackgroundColor = SKColors.Transparent
                 };
             }            
@@ -281,7 +281,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                     LineSize = 3,
                     PointMode = PointMode.Circle,
                     PointSize = 10,
-                    LabelTextSize = 20,
+                    LabelTextSize = 18,
                     BackgroundColor = SKColors.Transparent
                 };
             }
@@ -313,7 +313,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                     LineSize = 3,
                     PointMode = PointMode.Circle,
                     PointSize = 10,
-                    LabelTextSize = 20,
+                    LabelTextSize = 18,
                     BackgroundColor = SKColors.Transparent
                 };
             }

@@ -6,11 +6,24 @@
              mc:Ignorable="d"
              x:Class="Everaldo.Cardoso.C19BR.Mobile.View.About"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-             prism:ViewModelLocator.AutowireViewModel="True">
-    
+             prism:ViewModelLocator.AutowireViewModel="True"
+             NavigationPage.HasNavigationBar="False">
+
     <ContentPage.Content>
         <StackLayout>
-      
+            
+            <ActivityIndicator 
+                BackgroundColor="Transparent"  
+                IsVisible="{Binding IsBusy}" 
+                IsRunning="{Binding IsBusy}"
+                VerticalOptions="CenterAndExpand"/>
+
+            <WebView 
+                IsVisible="{Binding IsNotBusy}" 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand" 
+                Source="{Binding WebViewSource}"/>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

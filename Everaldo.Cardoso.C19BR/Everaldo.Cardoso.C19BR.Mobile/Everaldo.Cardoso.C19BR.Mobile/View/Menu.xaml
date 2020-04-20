@@ -16,6 +16,10 @@
              CurrentPageChanged="PageChanged"
              xmlns:views="clr-namespace:Everaldo.Cardoso.C19BR.Mobile.View">
 
+    <TabbedPage.ToolbarItems>
+        <ToolbarItem Text="Sobre" IconImageSource="ic_info.png" Command="{Binding AppAbout}"/>
+    </TabbedPage.ToolbarItems>
+
     <views:WorldCasesList Title="Mundo" IconImageSource="ic_world.png"/>
     <views:CountryDetail Title="Brasil" IconImageSource="ic_brasil.png"/>
     <views:StatesCasesList Title="Estados" IconImageSource="ic_flag.png"/>

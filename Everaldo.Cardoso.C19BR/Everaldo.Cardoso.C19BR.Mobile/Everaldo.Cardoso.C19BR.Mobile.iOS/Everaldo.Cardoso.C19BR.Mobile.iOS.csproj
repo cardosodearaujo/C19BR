@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\BaseURLService.cs" />
     <Compile Include="Services\CloseService.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
@@ -189,6 +190,18 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_flag%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_info%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_info%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\info.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_photo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
