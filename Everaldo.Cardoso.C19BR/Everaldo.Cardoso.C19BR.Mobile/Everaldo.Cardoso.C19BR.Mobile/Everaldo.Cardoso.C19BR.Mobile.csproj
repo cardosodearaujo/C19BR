@@ -39,9 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="ViewControl\RoundedButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="View\About.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -53,9 +50,6 @@
     </EmbeddedResource>
     <EmbeddedResource Update="View\CountryDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="ViewControl\RoundButton.xaml">
-      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Menu.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
