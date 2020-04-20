@@ -358,7 +358,7 @@
                             <StackLayout>
 
                                 <Label 
-                                    Text="Casos acumulados (Últimos 15 dias)" 
+                                    Text="Casos acumulados (últimos 15 dias)" 
                                     FontSize="25" 
                                     FontAttributes="Bold" 
                                     TextColor="#af4448"/>
@@ -379,7 +379,7 @@
                             <StackLayout>
 
                                 <Label 
-                                    Text="Óbitos (Últimos 15 dias)" 
+                                    Text="Óbitos acumulados (últimos 15 dias)" 
                                     FontSize="25" 
                                     FontAttributes="Bold" 
                                     TextColor="#af4448"/>
@@ -400,7 +400,7 @@
                             <StackLayout>
 
                                 <Label 
-                                    Text="Casos por dia (Últimos 15 dias)" 
+                                    Text="Casos por dia (últimos 15 dias)" 
                                     FontSize="25" 
                                     FontAttributes="Bold" 
                                     TextColor="#af4448"/>
@@ -412,6 +412,27 @@
                             </StackLayout>
 
                             <charts:ChartView HeightRequest="250" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Chart="{Binding ChartDataNewCases}"/>
+
+                        </StackLayout>
+
+                        <StackLayout
+                            Margin="0,10,0,0">
+
+                            <StackLayout>
+
+                                <Label 
+                                    Text="Óbitos por dia (últimos 15 dias)" 
+                                    FontSize="25" 
+                                    FontAttributes="Bold" 
+                                    TextColor="#af4448"/>
+
+                                <BoxView 
+                                    Color="#cb9ca1" 
+                                    HeightRequest="1.5"/>
+
+                            </StackLayout>
+
+                            <charts:ChartView HeightRequest="250" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Chart="{Binding ChartDataNewDeaths}"/>
 
                         </StackLayout>
 

@@ -126,6 +126,14 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
         }
 
 
+        private Chart _ChartDataNewDeaths;
+        public Chart ChartDataNewDeaths
+        {
+            get { return _ChartDataNewDeaths; }
+            set { SetProperty(ref _ChartDataNewDeaths, value); }
+        }
+
+
         private string _DateUpdate;
         public string DateUpdate
         {
@@ -218,6 +226,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                         LoadChartCasesAccumulated(timeline);
                         LoadChartDeathsAccumulated(timeline);
                         LoadChartNewCases(timeline);
+                        LoadChartNewDeaths(timeline);
                     }
                 }              
             }            
@@ -307,6 +316,38 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                 }
 
                 ChartDataNewCases = new LineChart()
+                {
+                    Entries = entries,
+                    LineMode = LineMode.Straight,
+                    LineSize = 3,
+                    PointMode = PointMode.Circle,
+                    PointSize = 10,
+                    LabelTextSize = 18,
+                    BackgroundColor = SKColors.Transparent
+                };
+            }
+        }
+
+        private void LoadChartNewDeaths(IList<Day> timeline)
+        {
+            if (timeline != null)
+            {
+                var entries = new List<Entry>();
+                var black = false;
+
+                foreach (var day in timeline)
+                {
+                    entries.Add(new Entry((float)day.new_deaths)
+                    {
+                        Label = day.date.ToString("dd"),
+                        Color = black ? SKColors.Black : SKColor.Parse("#ba6b6c"),
+                        TextColor = black ? SKColors.Black : SKColor.Parse("#ba6b6c"),
+                        ValueLabel = string.Format("{0:N0}", day.new_deaths),
+                    });
+                    black = black ? false : true;
+                }
+
+                ChartDataNewDeaths = new LineChart()
                 {
                     Entries = entries,
                     LineMode = LineMode.Straight,
