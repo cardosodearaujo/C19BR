@@ -10,8 +10,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -23,7 +21,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.companyname.Everaldo.Cardoso.C19BR.Mobile</string>
+	<string>Everaldo.Cardoso.C19BR</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
@@ -31,12 +29,12 @@
 	<key>CFBundleName</key>
 	<string>Everaldo.Cardoso.C19BR.Mobile</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<string>Assets.xcassets/AppIcons.appiconset</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>materialdesignicons-webfont.ttf</string>
 	</array>
 	<key>CFBundleDisplayName</key>
-	<string>COVID Tracker Brasil</string>
+	<string>Covid-19 Brasil</string>
 </dict>
 </plist>

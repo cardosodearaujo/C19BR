@@ -33,10 +33,10 @@
                             <ColumnDefinition Width="65"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Text="Estado" FontAttributes="Bold" TextColor="Black" Grid.Column="0"/>
-                        <Label Text="Confirmados" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="1"/>
-                        <Label Text="Óbitos" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="2"/>
-                        <Label Text="Mortalidade" FontAttributes="Bold" TextColor="Black" HorizontalTextAlignment="End" Grid.Column="3"/>
+                        <Label Text="Estado" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center"  Grid.Column="0"/>
+                        <Label Text="Confirmados" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center"  HorizontalTextAlignment="End" Grid.Column="1"/>
+                        <Label Text="Óbitos" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center"  HorizontalTextAlignment="End" Grid.Column="2"/>
+                        <Label Text="Mortalidade" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center"  HorizontalTextAlignment="End" Grid.Column="3"/>
                     </Grid>
                 </StackLayout>
                 
@@ -64,32 +64,32 @@
                                         </Grid.ColumnDefinitions>
 
                                         <Label
-                                        Grid.Column="0"
-                                        FontSize="18"
-                                        TextColor="#af4448"
-                                        Text="{Binding Name}" 
-                                        FontAttributes="Bold" />
+                                            Grid.Column="0"
+                                            FontSize="{OnPlatform iOS='15', Android='18'}"
+                                            TextColor="#af4448"
+                                            Text="{Binding Name}" 
+                                            FontAttributes="Bold" />
 
                                         <Label
-                                        Grid.Column="1"
-                                        FontSize="18"
-                                        HorizontalTextAlignment="End"
-                                        HorizontalOptions="EndAndExpand"
-                                        Text="{Binding Confirmed}" />
+                                            Grid.Column="1"
+                                            FontSize="{OnPlatform iOS='15', Android='18'}"
+                                            HorizontalTextAlignment="End"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="{Binding Confirmed}" />
 
                                         <Label
-                                        Grid.Column="2"
-                                        FontSize="18"
-                                        HorizontalTextAlignment="End"
-                                        HorizontalOptions="EndAndExpand"
-                                        Text="{Binding Deaths}" />
+                                            Grid.Column="2"
+                                            FontSize="{OnPlatform iOS='15', Android='18'}"
+                                            HorizontalTextAlignment="End"
+                                            HorizontalOptions="EndAndExpand"
+                                            Text="{Binding Deaths}" />
 
                                         <Label
-                                        Grid.Column="3"
-                                        FontSize="18"
-                                        HorizontalTextAlignment="End"
-                                        HorizontalOptions="End"
-                                        Text="{Binding DeathRate}" />
+                                            Grid.Column="3"
+                                            FontSize="{OnPlatform iOS='15', Android='18'}"
+                                            HorizontalTextAlignment="End"
+                                            HorizontalOptions="End"
+                                            Text="{Binding DeathRate}" />
 
                                     </Grid>
                                 </StackLayout>

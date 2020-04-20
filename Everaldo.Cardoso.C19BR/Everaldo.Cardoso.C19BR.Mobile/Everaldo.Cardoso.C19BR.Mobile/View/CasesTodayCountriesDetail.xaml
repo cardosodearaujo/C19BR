@@ -12,10 +12,12 @@
 
     <Frame CornerRadius="15" Margin="12" Padding="24" BackgroundColor="White" HorizontalOptions="Center" VerticalOptions="Center">
         <StackLayout>
+            
             <Label Text="Dados de hoje" FontAttributes="Bold" FontSize="20"/>
+            <Label x:Name="lblCountryName" FontSize="13"/>
 
-            <StackLayout Orientation="Vertical">
-
+            <StackLayout Orientation="Vertical" Margin="0,5,0,0">
+                
                 <StackLayout Orientation="Horizontal">
                     <Label Text="+" TextColor="#af4448"/>
                     <Label x:Name="lblConfirmedToday" TextColor="#af4448"/>

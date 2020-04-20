@@ -11,6 +11,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
         public CasesTodayCountriesDetail(ItemSearchListVO item)
         {
             InitializeComponent();
+            lblCountryName.Text = item.Name;
             lblConfirmedToday.Text = item.ConfirmedToday;
             lblDeathsToday.Text = item.DeathsToday;
         }

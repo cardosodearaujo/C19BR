@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Everaldo.Cardoso.C19BR.Domain.Objects.World
 {
@@ -9,6 +10,7 @@ namespace Everaldo.Cardoso.C19BR.Domain.Objects.World
             coordinates = new Coordinates();
             today = new Today();
             latest_data = new LatestData();
+            timeline = new List<Day>();
         }
 
         public Coordinates coordinates { get; set; }
@@ -18,5 +20,6 @@ namespace Everaldo.Cardoso.C19BR.Domain.Objects.World
         public DateTime updated_at { get; set; }
         public Today today { get; set; }
         public LatestData latest_data { get; set; }
+        public IList<Day> timeline { get; set; }
     }
 }

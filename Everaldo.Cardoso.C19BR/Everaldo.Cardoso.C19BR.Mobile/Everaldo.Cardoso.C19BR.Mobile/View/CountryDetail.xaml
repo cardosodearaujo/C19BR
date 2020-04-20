@@ -6,7 +6,9 @@
              mc:Ignorable="d"
              x:Class="Everaldo.Cardoso.C19BR.Mobile.View.CountryDetail"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-             prism:ViewModelLocator.AutowireViewModel="True">    
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             Title="Brasil">    
 
     <ContentPage.Content>
         <RefreshView 
@@ -16,7 +18,7 @@
             <ScrollView>
 
                 <StackLayout 
-                    Margin="{OnPlatform iOS='15,40,15,0', Android='15,15,15,15'}">
+                    Margin="15">
                     
                     <ActivityIndicator 
                         BackgroundColor="Transparent"                 
@@ -30,16 +32,20 @@
                         VerticalOptions="FillAndExpand">
 
                         <StackLayout>
-                            
-                            <Label 
-                                Text="Dados gerais" 
-                                FontSize="25" 
-                                FontAttributes="Bold" 
-                                TextColor="#af4448"/>
 
-                            <BoxView 
-                                Color="#cb9ca1" 
-                                HeightRequest="1.5"/>
+                            <StackLayout>
+
+                                <Label 
+                                    Text="Dados gerais" 
+                                    FontSize="25" 
+                                    FontAttributes="Bold" 
+                                    TextColor="#af4448"/>
+
+                                <BoxView 
+                                    Color="#cb9ca1" 
+                                    HeightRequest="1.5"/>
+
+                            </StackLayout>
 
                             <Grid 
                                 Margin="0,15,0,0"
@@ -51,7 +57,7 @@
                                     <ColumnDefinition/>                                    
                                 </Grid.ColumnDefinitions>
 
-                                <!--Casos população-->
+                                <!--População-->
                                 <Frame
                                     Grid.Column="0"
                                     Grid.Row="0"
@@ -64,18 +70,18 @@
                                     <StackLayout>
 
                                         <Label 
-                                        HorizontalOptions="Start"
-                                        Text="{Binding Population}"
-                                        FontSize="25"
-                                        FontAttributes="Bold"
-                                        TextColor="#000000"/>
+                                            HorizontalOptions="Start"
+                                            Text="{Binding Population}"
+                                            FontSize="{OnPlatform iOS='23', Android='25'}"
+                                            FontAttributes="Bold"
+                                            TextColor="#000000"/>
 
                                         <Label 
-                                        HorizontalOptions="Start"
-                                        Text="População"
-                                        FontSize="15"
-                                        FontAttributes="Bold"
-                                        TextColor="#af4448"/>
+                                            HorizontalOptions="Start"
+                                            Text="População"
+                                            FontSize="15"
+                                            FontAttributes="Bold"
+                                            TextColor="#af4448"/>
 
                                     </StackLayout>
                                 </Frame>
@@ -95,13 +101,13 @@
                                         <Label 
                                         HorizontalOptions="Start"
                                         Text="{Binding NumberCases}"
-                                        FontSize="25"
+                                        FontSize="{OnPlatform iOS='23', Android='25'}"
                                         FontAttributes="Bold"
                                         TextColor="#000000"/>
 
                                         <Label 
                                         HorizontalOptions="Start"
-                                        Text="Casos confirmados"
+                                        Text="Confirmados"
                                         FontSize="15"
                                         FontAttributes="Bold"
                                         TextColor="#af4448"/>
@@ -123,7 +129,7 @@
 
                                         <Label 
                                         Text="{Binding Recovered}"
-                                        FontSize="25"
+                                        FontSize="{OnPlatform iOS='23', Android='25'}"
                                         FontAttributes="Bold"
                                         TextColor="#000000"
                                         HorizontalOptions="Start"/>
@@ -153,7 +159,7 @@
                                         <Label 
                                         HorizontalOptions="Start"
                                         Text="{Binding Critical}"
-                                        FontSize="25"
+                                        FontSize="{OnPlatform iOS='23', Android='25'}"
                                         FontAttributes="Bold"
                                         TextColor="#000000"/>
 
@@ -182,7 +188,7 @@
                                         <Label
                                         HorizontalOptions="Start"
                                         Text="{Binding NumberDeaths}"
-                                        FontSize="25"
+                                        FontSize="{OnPlatform iOS='23', Android='25'}"
                                         FontAttributes="Bold"
                                         TextColor="#000000"/>
 
@@ -211,13 +217,13 @@
                                         <Label 
                                         HorizontalOptions="Start"
                                         Text="{Binding DeathsRate}"
-                                        FontSize="25"
+                                        FontSize="{OnPlatform iOS='23', Android='25'}"
                                         FontAttributes="Bold"
                                         TextColor="#000000"/>
 
                                         <Label
                                         HorizontalOptions="Start"
-                                        Text="Taxa de mortalidade"
+                                        Text="Mortalidade"
                                         FontSize="15"
                                         FontAttributes="Bold"
                                         TextColor="#af4448"/>
@@ -227,26 +233,30 @@
 
                             </Grid>
 
-                            <StackLayout 
-                                Orientation="Horizontal">
+                            <StackLayout>
                                 
-                                <Label 
-                                    Text="Dados de hoje" 
-                                    FontSize="25" 
-                                    FontAttributes="Bold" 
-                                    TextColor="#af4448"/>
+                                <StackLayout 
+                                    Orientation="Horizontal">
+
+                                    <Label 
+                                        Text="Dados de hoje" 
+                                        FontSize="25" 
+                                        FontAttributes="Bold" 
+                                        TextColor="#af4448"/>
+
+                                    <Label 
+                                        Text="{Binding DateUpdate}"
+                                        FontSize="25" 
+                                        FontAttributes="Bold" 
+                                        TextColor="#af4448"/>
+                                    
+                                </StackLayout>
                                 
-                                <Label 
-                                    Text="{Binding DateUpdate}"
-                                    FontSize="25" 
-                                    FontAttributes="Bold" 
-                                    TextColor="#af4448"/>  
+                                <BoxView 
+                                    Color="#cb9ca1" 
+                                    HeightRequest="1.5"/>
                                 
-                            </StackLayout>                         
-                            
-                            <BoxView 
-                                Color="#cb9ca1" 
-                                HeightRequest="1.5"/>
+                            </StackLayout>                     
 
                             <Grid 
                                 Margin="0,15,0,0"
@@ -275,14 +285,14 @@
                                             <Label 
                                                 HorizontalOptions="Start"
                                                 Text="+"
-                                                FontSize="25"
+                                                FontSize="{OnPlatform iOS='23', Android='25'}"
                                                 FontAttributes="Bold"
                                                 TextColor="#000000"/>
 
                                             <Label 
                                                 HorizontalOptions="Start"
                                                 Text="{Binding ConfirmedToday}"
-                                                FontSize="25"
+                                                FontSize="{OnPlatform iOS='23', Android='25'}"
                                                 FontAttributes="Bold"
                                                 TextColor="#000000"/>
                                             
@@ -316,14 +326,14 @@
                                             <Label 
                                                 HorizontalOptions="Start"
                                                 Text="+"
-                                                FontSize="25"
+                                                FontSize="{OnPlatform iOS='23', Android='25'}"
                                                 FontAttributes="Bold"
                                                 TextColor="#000000"/>
 
                                             <Label 
                                                 HorizontalOptions="Start"
                                                 Text="{Binding DeathsToday}"
-                                                FontSize="25"
+                                                FontSize="{OnPlatform iOS='23', Android='25'}"
                                                 FontAttributes="Bold"
                                                 TextColor="#000000"/>
 
@@ -339,20 +349,82 @@
 
                                     </StackLayout>
                                 </Frame>
-                            </Grid>
-
+                            </Grid> 
                             
+                        </StackLayout>
+
+                        <StackLayout>
+
+                            <StackLayout>
+
+                                <Label 
+                                    Text="Casos acumulados (Últimos 15 dias)" 
+                                    FontSize="25" 
+                                    FontAttributes="Bold" 
+                                    TextColor="#af4448"/>
+
+                                <BoxView 
+                                    Color="#cb9ca1" 
+                                    HeightRequest="1.5"/>
+
+                            </StackLayout>
+
+                            <charts:ChartView HeightRequest="250" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Chart="{Binding ChartDataCaseAccumulated}"/>
                             
                         </StackLayout>
 
                         <StackLayout 
-                                Orientation="Horizontal"
-                                VerticalOptions="EndAndExpand"
-                                HorizontalOptions="Start">
+                            Margin="0,10,0,0">
+
+                            <StackLayout>
+
+                                <Label 
+                                    Text="Óbitos (Últimos 15 dias)" 
+                                    FontSize="25" 
+                                    FontAttributes="Bold" 
+                                    TextColor="#af4448"/>
+
+                                <BoxView 
+                                    Color="#cb9ca1" 
+                                    HeightRequest="1.5"/>
+
+                            </StackLayout>
+
+                            <charts:ChartView HeightRequest="250" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Chart="{Binding ChartDataDeathsAccumulated}"/>
+
+                        </StackLayout>
+
+                        <StackLayout
+                            Margin="0,10,0,0">
+
+                            <StackLayout>
+
+                                <Label 
+                                    Text="Casos por dia (Últimos 15 dias)" 
+                                    FontSize="25" 
+                                    FontAttributes="Bold" 
+                                    TextColor="#af4448"/>
+
+                                <BoxView 
+                                    Color="#cb9ca1" 
+                                    HeightRequest="1.5"/>
+
+                            </StackLayout>
+
+                            <charts:ChartView HeightRequest="250" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" Chart="{Binding ChartDataNewCases}"/>
+
+                        </StackLayout>
+
+                        <StackLayout 
+                            Margin="10"
+                            Orientation="Horizontal"
+                            VerticalOptions="EndAndExpand"
+                            HorizontalOptions="Start">
 
                             <Label Text="Dados atualizados em"/>
                             <Label Text="{Binding DateUpdate}"/>
                         </StackLayout>
+                        
                     </StackLayout>
                 </StackLayout>                
             </ScrollView>

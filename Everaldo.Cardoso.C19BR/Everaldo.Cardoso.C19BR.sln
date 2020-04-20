@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Everaldo.Cardoso.C19BR.Mobi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Everaldo.Cardoso.C19BR.Mobile.iOS", "Everaldo.Cardoso.C19BR.Mobile\Everaldo.Cardoso.C19BR.Mobile.iOS\Everaldo.Cardoso.C19BR.Mobile.iOS.csproj", "{A0AD5DDC-B416-481A-BB0C-1FD8C17DA309}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Everaldo.Cardoso.C19BR.Domain", "Everaldo.Cardoso.C19BR.Domain\Everaldo.Cardoso.C19BR.Domain.csproj", "{718F4DB7-D167-481C-A675-0DB565D303F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Everaldo.Cardoso.C19BR.Domain", "Everaldo.Cardoso.C19BR.Domain\Everaldo.Cardoso.C19BR.Domain.csproj", "{718F4DB7-D167-481C-A675-0DB565D303F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,7 +69,9 @@ Global
 		{E6DC46C4-CFFD-42F7-BC11-203F9CA81BD5}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{E6DC46C4-CFFD-42F7-BC11-203F9CA81BD5}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{E6DC46C4-CFFD-42F7-BC11-203F9CA81BD5}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
-		{A0AD5DDC-B416-481A-BB0C-1FD8C17DA309}.Debug|Any CPU.ActiveCfg = Debug|iPhone
+		{A0AD5DDC-B416-481A-BB0C-1FD8C17DA309}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{A0AD5DDC-B416-481A-BB0C-1FD8C17DA309}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{A0AD5DDC-B416-481A-BB0C-1FD8C17DA309}.Debug|Any CPU.Deploy.0 = Debug|iPhoneSimulator
 		{A0AD5DDC-B416-481A-BB0C-1FD8C17DA309}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{A0AD5DDC-B416-481A-BB0C-1FD8C17DA309}.Debug|iPhone.Build.0 = Debug|iPhone
 		{A0AD5DDC-B416-481A-BB0C-1FD8C17DA309}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
