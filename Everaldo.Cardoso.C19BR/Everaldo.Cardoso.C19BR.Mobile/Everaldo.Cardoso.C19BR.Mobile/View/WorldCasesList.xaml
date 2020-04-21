@@ -43,6 +43,7 @@
                 </StackLayout>
 
                 <ListView
+                    HorizontalOptions="FillAndExpand"
                     IsPullToRefreshEnabled="True"
                     RefreshCommand="{Binding Refresh}"
                     IsRefreshing="{Binding IsRefreshing}"
@@ -54,8 +55,7 @@
                         <DataTemplate >
                             <ViewCell >
                                 <StackLayout 
-                                    Margin="10"
-                                    Orientation="Horizontal">
+                                    Margin="10">
 
                                     <Grid  ColumnSpacing="2" >
                                         <Grid.ColumnDefinitions>
@@ -74,7 +74,8 @@
                                             FontAttributes="Bold"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="Start"/>
+                                            HorizontalTextAlignment="Start"
+                                            VerticalTextAlignment="Center"/>
 
                                         <Label
                                             Grid.Column="1"
@@ -82,7 +83,8 @@
                                             Text="{Binding Confirmed}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="End"/>
+                                            HorizontalTextAlignment="End"
+                                            VerticalTextAlignment="Center"/>
 
                                         <Label
                                             Grid.Column="2"
@@ -90,7 +92,8 @@
                                             Text="{Binding Recovered}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="End"/>
+                                            HorizontalTextAlignment="End"
+                                            VerticalTextAlignment="Center"/>
 
                                         <Label
                                             Grid.Column="3"
@@ -98,7 +101,8 @@
                                             Text="{Binding Deaths}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="End"/>
+                                            HorizontalTextAlignment="End"
+                                            VerticalTextAlignment="Center"/>
 
                                         <Label
                                             Grid.Column="4"
@@ -106,7 +110,8 @@
                                             Text="{Binding DeathRate}"
                                             HorizontalOptions="FillAndExpand"
                                             VerticalOptions="FillAndExpand"
-                                            HorizontalTextAlignment="End"/>
+                                            HorizontalTextAlignment="End"
+                                            VerticalTextAlignment="Center"/>
 
                                     </Grid>
                                 </StackLayout>
