@@ -55,7 +55,7 @@
                         <DataTemplate >
                             <ViewCell >
                                 <StackLayout 
-                                    Margin="10">
+                                    Margin="10,10,0,10">
 
                                     <Grid  ColumnSpacing="2" >
                                         <Grid.ColumnDefinitions>
