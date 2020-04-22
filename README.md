@@ -3,6 +3,8 @@
 
 ### Ferramentas utilizadas no desenvolvimento:
 
+- [Xamarim.Forms](https://docs.microsoft.com/pt-br/xamarin/xamarin-forms/);
+- [Xamarim.Essentials](https://docs.microsoft.com/pt-br/xamarin/essentials/);
 - Padrão MVVM: [Prism Library](https://prismlibrary.com/);
 - Páginas Popup: [Rg.Plugins.Popup](https://github.com/rotorgames/Rg.Plugins.Popup);
 - Caixas de diálogo: [ACR User Dialogs](https://github.com/aritchie/userdialogs);
