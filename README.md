@@ -24,3 +24,5 @@ O [Brasil.IO](https://brasil.io/home/)) trata dos dados a nível Brasil, e traba
 
 ### Screenshots:
 ![Screenshot_20200421-120310](https://user-images.githubusercontent.com/17802409/79998425-12472c00-8491-11ea-8d04-019ca350ae7f.png)
+
+Me siga no LinkedIn: [**Everaldo Cardoso de Araújo**](https://www.linkedin.com/in/everaldocardoso/) 
