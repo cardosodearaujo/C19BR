@@ -1,7 +1,11 @@
 # **Covid-19 Brasil**
 **Dados do Covid-19 no Brasil e no mundo.**
 
+### Ferramentas utilizadas no desenvolvimento:
 
+- Padrão MVVM: [Prism Library](https://prismlibrary.com/);
+- Páginas Popup: [Rg.Plugins.Popup](https://github.com/rotorgames/Rg.Plugins.Popup);
+- Caixas de diálogo: [ACR User Dialogs](https://github.com/aritchie/userdialogs)
 
 ### Fontes de dados:
 
