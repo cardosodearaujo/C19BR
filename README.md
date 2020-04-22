@@ -1,5 +1,11 @@
 # **Covid-19 Brasil**
-**Dados do Covid-19 no Brasil e no mundo.**
+**Dados da Covid-19 no Brasil e no mundo.**
+
+Desenvolvido com a ideia de reunir dados da Covid-19 do Brasil e do mundo, para isso o app faz consulta em duas fontes de dados como é citado a abaixo ([ABOUT-CORONA.NET](https://about-corona.net/),[Brasil.IO](https://brasil.io/home/)), essas duas fontes de dados tem uma caracteristica comum: tratam do coronavirus, porém elas tem foco diferente.
+
+O [ABOUT-CORONA.NET](https://about-corona.net/) trata dos dados a nível mundial, portato traz diversos paises do mundo cada um com seus casos e suas timelines.
+
+O [Brasil.IO](https://brasil.io/home/)) trata dos dados a nível Brasil, e trabalha de forma colaborativa, analisando os dados das Secretarias de Saúde das Unidades Federativas de todo o país.
 
 ### Ferramentas utilizadas no desenvolvimento:
 
