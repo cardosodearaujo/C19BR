@@ -1,5 +1,5 @@
 # **Covid-19 Brasil**
-**Dados da Covid-19 no Brasil e no mundo.**
+**Dados da Covid-19 no Brasil e no mundo**
 
 Desenvolvido com a ideia de reunir dados da Covid-19 do Brasil e do mundo, para isso o app faz consulta em duas fontes de dados como é citado a abaixo ([ABOUT-CORONA.NET](https://about-corona.net/), [Brasil.IO](https://brasil.io/home/)), essas duas fontes de dados tem uma caracteristica comum: tratam do coronavirus, porém elas tem foco diferente.
 
@@ -29,4 +29,4 @@ O [Brasil.IO](https://brasil.io/home/)) trata dos dados a nível Brasil, e traba
 
 ![Covid-19GIF-50%](https://user-images.githubusercontent.com/17802409/80008464-30675900-849e-11ea-997f-ced8c76c2bdb.gif)
 
-Me siga no LinkedIn: [**Everaldo Cardoso de Araújo**](https://www.linkedin.com/in/everaldocardoso/) 
+Me siga no LinkedIn: [**Everaldo Cardoso de Araújo**](https://www.linkedin.com/in/everaldocardoso/)
