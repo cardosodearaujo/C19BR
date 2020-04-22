@@ -27,6 +27,6 @@ O [Brasil.IO](https://brasil.io/home/)) trata dos dados a nível Brasil, e traba
 
 ### GIF:
 
-![Covid-19GIF](https://user-images.githubusercontent.com/17802409/80008118-a7502200-849d-11ea-8d6c-be92335fcf99.gif)
+![Covid-19GIF-50%](https://user-images.githubusercontent.com/17802409/80008464-30675900-849e-11ea-997f-ced8c76c2bdb.gif)
 
 Me siga no LinkedIn: [**Everaldo Cardoso de Araújo**](https://www.linkedin.com/in/everaldocardoso/) 
