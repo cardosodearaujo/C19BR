@@ -13,7 +13,7 @@ O [Brasil.IO](https://brasil.io/home/)) trata dos dados a nível Brasil, e traba
 
 - **Dados dos estados e municípios brasileiros:** [Brasil.IO](https://brasil.io/home/), com fonte de dados das Secretarias de Saúde das Unidades Federativas, e dados tratados por Álvaro Justen e colaboradores/Brasil.IO, sob a licença Creative Commons Attribution ShareAlike.
 
-### Ferramentas utilizadas no desenvolvimento:
+### Ferramentas utilizadas no desenvolvimento da aplicação:
 
 - [Xamarim.Forms](https://docs.microsoft.com/pt-br/xamarin/xamarin-forms/);
 - [Xamarim.Essentials](https://docs.microsoft.com/pt-br/xamarin/essentials/);
