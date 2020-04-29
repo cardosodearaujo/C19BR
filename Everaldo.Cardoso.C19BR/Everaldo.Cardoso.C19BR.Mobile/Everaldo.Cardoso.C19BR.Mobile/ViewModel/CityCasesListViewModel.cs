@@ -5,8 +5,10 @@ using Everaldo.Cardoso.C19BR.Framework.Bases;
 using Everaldo.Cardoso.C19BR.Framework.Enums;
 using Everaldo.Cardoso.C19BR.Framework.ToolBox;
 using Everaldo.Cardoso.C19BR.Mobile.Services;
+using Everaldo.Cardoso.C19BR.Mobile.View;
 using Prism.Navigation;
 using Prism.Services;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -37,6 +39,13 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             set { SetProperty(ref _Refresh, value); }
         }
 
+        public Command _Graphics;
+        public Command Graphics
+        {
+            get { return _Graphics; }
+            set { SetProperty(ref _Graphics, value); }
+        }
+
         private bool _IsRefreshing;
         public bool IsRefreshing
         {
@@ -45,7 +54,6 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
         }
 
         public States AtualState { get; set; }
-
         #endregion
 
         #region "Metodos"
@@ -56,10 +64,11 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             {
                 if (parameters["State"] != null && parameters["UF"] != null)
                 {
-                    Title = "Estado: " + CultureInfo.CurrentCulture.TextInfo.ToTitleCase(parameters["State"].ToString().ToLower());
+                    Title = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(parameters["State"].ToString().ToLower());
                     AtualState = (States)EnumUtility.GetEnumByValue<States>(parameters["UF"].ToString());
                     await LoadDataCity(AtualState);
                     Refresh = new Command(LoadData);
+                    Graphics = new Command(OpenGraphics);
                 }
                 else
                 {
@@ -94,7 +103,6 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             }
         }
 
-
         private async Task LoadDataCity(States state)
         {
             var service = new CasesBrasilService();
@@ -113,6 +121,11 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                             DeathRate = city.death_rate == null ? "0,0%" : (string.Format("{0:N1}", (((decimal)city.death_rate) * 100)) + "%")
                         }).ToList();
             }
+        }
+
+        private async void OpenGraphics()
+        {
+            if (AtualState != null) await PopupNavigation.Instance.PushAsync(new StateGraphicsDetail(AtualState));
         }
         #endregion
     }

@@ -75,7 +75,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                     var pairs = new NavigationParameters();
                     pairs.Add("UF", stade.UF);
                     pairs.Add("State", stade.Name);
-                    await NavigationService.NavigateAsync("NavigationPage/CityCasesList", pairs, animated: true);
+                    await NavigationService.NavigateAsync("CityCasesList", pairs, animated: true);
                 }
                 else
                 {

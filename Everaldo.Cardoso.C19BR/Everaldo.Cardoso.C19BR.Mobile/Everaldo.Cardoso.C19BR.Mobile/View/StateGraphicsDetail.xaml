@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="Everaldo.Cardoso.C19BR.Mobile.View.StateGraphicsDetail"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    mc:Ignorable="d">
+
+    <Frame
+        Margin="12"
+        Padding="12"
+        BackgroundColor="White"
+        CornerRadius="15"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="Center">
+        <StackLayout>
+
+            <ActivityIndicator
+                x:Name="aciLoading"
+                BackgroundColor="Transparent"
+                VerticalOptions="CenterAndExpand" />
+
+            <StackLayout x:Name="stlGeral">
+
+                <Label
+                    x:Name="lblStateName"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    TextColor="#af4448" />
+
+                <StackLayout Margin="0,10,0,0">
+
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        Text="Evolução da Covid-19 (últimos 15 dias):" />
+
+                    <ScrollView>
+                        <StackLayout>
+
+                            <!--  Casos acumulados  -->
+                            <StackLayout>
+
+                                <StackLayout>
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        Text="Casos acumulados"
+                                        TextColor="#af4448" />
+
+                                    <BoxView HeightRequest="1.5" Color="#cb9ca1" />
+
+                                </StackLayout>
+
+                                <charts:ChartView
+                                    x:Name="cvwChartDataCaseAccumulated"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="250"
+                                    HorizontalOptions="FillAndExpand" />
+                            </StackLayout>
+
+                            <!--  Obitos acumulados  -->
+                            <StackLayout Margin="0,10,0,0">
+
+                                <StackLayout>
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        Text="Óbitos acumulados"
+                                        TextColor="#af4448" />
+
+                                    <BoxView HeightRequest="1.5" Color="#cb9ca1" />
+
+                                </StackLayout>
+
+                                <charts:ChartView
+                                    x:Name="cvwChartDataDeathsAccumulated"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="250"
+                                    HorizontalOptions="FillAndExpand" />
+
+                            </StackLayout>
+
+
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+
+                <StackLayout
+                    Margin="0,3,0,0"
+                    HorizontalOptions="End"
+                    VerticalOptions="End">
+
+                    <Button
+                        BackgroundColor="#ba6b6c"
+                        Clicked="Close"
+                        CornerRadius="15"
+                        HeightRequest="40"
+                        Text="Fechar"
+                        TextColor="White" />
+
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</pages:PopupPage>

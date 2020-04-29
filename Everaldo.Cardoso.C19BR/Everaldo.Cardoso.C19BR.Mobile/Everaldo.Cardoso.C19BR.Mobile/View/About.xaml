@@ -1,31 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.About"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-             prism:ViewModelLocator.AutowireViewModel="True"
-             NavigationPage.HasNavigationBar="False">
+<ContentPage
+    x:Class="Everaldo.Cardoso.C19BR.Mobile.View.About"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="Sobre o aplicativo"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    mc:Ignorable="d">
 
     <ContentPage.Content>
         <StackLayout>
-            
-            <ActivityIndicator 
-                BackgroundColor="Transparent"  
-                IsVisible="{Binding IsBusy}" 
-                IsRunning="{Binding IsBusy}"
-                VerticalOptions="CenterAndExpand"/>
 
-            <WebView 
-                IsVisible="{Binding IsNotBusy}" 
-                HorizontalOptions="FillAndExpand" 
-                VerticalOptions="FillAndExpand" 
+            <ActivityIndicator
+                BackgroundColor="Transparent"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="CenterAndExpand" />
+
+            <WebView
                 HeightRequest="1000"
-                WidthRequest="1000"
-                Source="{Binding WebViewSource}"/>
-            
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsNotBusy}"
+                Source="{Binding WebViewSource}"
+                VerticalOptions="FillAndExpand"
+                WidthRequest="1000" />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

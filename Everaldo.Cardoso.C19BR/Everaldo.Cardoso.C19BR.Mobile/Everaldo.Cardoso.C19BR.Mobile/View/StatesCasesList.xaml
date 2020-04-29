@@ -1,105 +1,141 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="Everaldo.Cardoso.C19BR.Mobile.View.StatesCasesList"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-             prism:ViewModelLocator.AutowireViewModel="True"
-             Title="Estados">
+<ContentPage
+    x:Class="Everaldo.Cardoso.C19BR.Mobile.View.StatesCasesList"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="Estados"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    mc:Ignorable="d">
 
     <ContentPage.Content>
         <StackLayout>
 
-            <ActivityIndicator 
-                BackgroundColor="Transparent"  
-                IsVisible="{Binding IsBusy}" 
+            <ActivityIndicator
+                BackgroundColor="Transparent"
                 IsRunning="{Binding IsBusy}"
-                VerticalOptions="CenterAndExpand"/>
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="CenterAndExpand" />
 
-            <StackLayout
-                Margin="10,10,10,0"
-                IsVisible="{Binding IsNotBusy}">
+            <StackLayout Margin="10,10,10,0" IsVisible="{Binding IsNotBusy}">
 
-                <StackLayout
-                    Margin="10,0,0,0">
+                <StackLayout Margin="10,0,0,0">
 
-                    <Grid  ColumnSpacing="2">
+                    <Grid ColumnSpacing="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="180*"/>
-                            <ColumnDefinition Width="65*"/>
-                            <ColumnDefinition Width="65*"/>
-                            <ColumnDefinition Width="65*"/>
+                            <ColumnDefinition Width="180*" />
+                            <ColumnDefinition Width="65*" />
+                            <ColumnDefinition Width="65*" />
+                            <ColumnDefinition Width="65*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Text="Estado" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="0"/>
-                        <Label Text="Confirmados" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="End" Grid.Column="1"/>
-                        <Label Text="Óbitos" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="End" Grid.Column="2"/>
-                        <Label Text="Letalidade" FontAttributes="Bold" TextColor="Black" FontSize="{OnPlatform iOS='9'}" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="End" Grid.Column="3"/>
+                        <Label
+                            Grid.Column="0"
+                            FontAttributes="Bold"
+                            FontSize="{OnPlatform iOS='9'}"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Estado"
+                            TextColor="Black"
+                            VerticalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Column="1"
+                            FontAttributes="Bold"
+                            FontSize="{OnPlatform iOS='9'}"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="End"
+                            Text="Confirmados"
+                            TextColor="Black"
+                            VerticalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Column="2"
+                            FontAttributes="Bold"
+                            FontSize="{OnPlatform iOS='9'}"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="End"
+                            Text="Óbitos"
+                            TextColor="Black"
+                            VerticalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center" />
+                        <Label
+                            Grid.Column="3"
+                            FontAttributes="Bold"
+                            FontSize="{OnPlatform iOS='9'}"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="End"
+                            Text="Letalidade"
+                            TextColor="Black"
+                            VerticalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center" />
                     </Grid>
                 </StackLayout>
-                
+
                 <ListView
+                    HasUnevenRows="True"
                     HorizontalOptions="FillAndExpand"
                     IsPullToRefreshEnabled="True"
-                    RefreshCommand="{Binding Refresh}"
                     IsRefreshing="{Binding IsRefreshing}"
-                    HasUnevenRows="True"
                     ItemsSource="{Binding List}"
+                    RefreshCommand="{Binding Refresh}"
                     SelectedItem="{Binding SelectedItem}"
                     SeparatorVisibility="Default">
-                    <ListView.ItemTemplate >
-                        <DataTemplate >
-                            <ViewCell >
-                                <StackLayout 
-                                    Margin="10,10,0,10">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Margin="10,10,0,10">
 
-                                    <Grid  ColumnSpacing="2">
+                                    <Grid ColumnSpacing="2">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="180*"/>
-                                            <ColumnDefinition Width="65*"/>
-                                            <ColumnDefinition Width="65*"/>
-                                            <ColumnDefinition Width="65*"/>
+                                            <ColumnDefinition Width="180*" />
+                                            <ColumnDefinition Width="65*" />
+                                            <ColumnDefinition Width="65*" />
+                                            <ColumnDefinition Width="65*" />
                                         </Grid.ColumnDefinitions>
 
                                         <Label
                                             Grid.Column="0"
-                                            FontSize="{OnPlatform iOS='15', Android='18'}"
-                                            TextColor="#af4448"
-                                            Text="{Binding Name}" 
-                                            FontAttributes="Bold" 
+                                            FontAttributes="Bold"
+                                            FontSize="{OnPlatform iOS='15',
+                                                                  Android='16'}"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="FillAndExpand"
                                             HorizontalTextAlignment="Start"
-                                            VerticalTextAlignment="Center"/>
+                                            Text="{Binding Name}"
+                                            TextColor="#af4448"
+                                            VerticalOptions="FillAndExpand"
+                                            VerticalTextAlignment="Center" />
 
                                         <Label
                                             Grid.Column="1"
-                                            FontSize="{OnPlatform iOS='15', Android='18'}"
-                                            Text="{Binding Confirmed}"
+                                            FontSize="{OnPlatform iOS='15',
+                                                                  Android='16'}"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="FillAndExpand"
                                             HorizontalTextAlignment="End"
-                                            VerticalTextAlignment="Center"/>
+                                            Text="{Binding Confirmed}"
+                                            VerticalOptions="FillAndExpand"
+                                            VerticalTextAlignment="Center" />
 
                                         <Label
                                             Grid.Column="2"
-                                            FontSize="{OnPlatform iOS='15', Android='18'}"
-                                            Text="{Binding Deaths}"
+                                            FontSize="{OnPlatform iOS='15',
+                                                                  Android='16'}"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="FillAndExpand"
                                             HorizontalTextAlignment="End"
-                                            VerticalTextAlignment="Center"/>
+                                            Text="{Binding Deaths}"
+                                            VerticalOptions="FillAndExpand"
+                                            VerticalTextAlignment="Center" />
 
                                         <Label
                                             Grid.Column="3"
-                                            FontSize="{OnPlatform iOS='15', Android='18'}"
-                                            Text="{Binding DeathRate}" 
+                                            FontSize="{OnPlatform iOS='15',
+                                                                  Android='16'}"
                                             HorizontalOptions="FillAndExpand"
-                                            VerticalOptions="FillAndExpand"
                                             HorizontalTextAlignment="End"
-                                            VerticalTextAlignment="Center"/>
+                                            Text="{Binding DeathRate}"
+                                            VerticalOptions="FillAndExpand"
+                                            VerticalTextAlignment="Center" />
 
                                     </Grid>
                                 </StackLayout>
@@ -108,6 +144,6 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-        </StackLayout>   
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -28,7 +28,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 
         private async void OpenAbout()
         {
-            await NavigationService.NavigateAsync("NavigationPage/About", animated: true);
+            await NavigationService.NavigateAsync("About", animated: true);
         }
         #endregion
     }

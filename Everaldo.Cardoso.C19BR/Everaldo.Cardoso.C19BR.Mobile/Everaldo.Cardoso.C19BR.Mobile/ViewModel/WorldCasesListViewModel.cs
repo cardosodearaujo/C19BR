@@ -73,7 +73,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
 
         private async void DetailItem(ItemSearchListVO item)
         {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-            if (item != null) await PopupNavigation.Instance.PushAsync(new CasesTodayCountriesDetail(item));
+            if (item != null) await PopupNavigation.Instance.PushAsync(new CountryGraphicsDetail(item));
         }
 
         private async void LoadData()
@@ -102,17 +102,18 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                 var countries = CountriesOfWorld.getCountriesOfWorld();
 
                 var lista = (from pais in cases.data
-                        orderby (pais.latest_data.confirmed == null ? 0 : (long)pais.latest_data.confirmed) descending
-                        select new ItemSearchListVO
-                        {
-                            Name = countries.Where(F => F.NameEn == pais.name.ToUpper().Trim()).Any() ? countries.Where(F => F.NameEn == pais.name.ToUpper().Trim()).FirstOrDefault().NamePT.ToUpper().Trim() : pais.name.ToUpper().ToUpper(),
-                            Confirmed = string.Format("{0:N0}", (pais.latest_data.confirmed == null ? 0 : (long)pais.latest_data.confirmed)),
-                            Recovered = string.Format("{0:N0}", (pais.latest_data.recovered == null ? 0 : (long)pais.latest_data.recovered)),
-                            Deaths = string.Format("{0:N0}", (pais.latest_data.deaths == null ? 0 : (long)pais.latest_data.deaths)),
-                            DeathRate = string.Format("{0:N1}", (pais.latest_data.calculated.death_rate == null ? 0 : ((decimal)pais.latest_data.calculated.death_rate))) + "%",
-                            ConfirmedToday = string.Format("{0:N0}",(pais.today.confirmed == null ? 0 : (long)pais.today.confirmed)),
-                            DeathsToday = string.Format("{0:N0}", (pais.today.deaths == null ? 0 : (long)pais.today.deaths))
-                        }).ToList();
+                             orderby (pais.latest_data.confirmed == null ? 0 : (long)pais.latest_data.confirmed) descending
+                             select new ItemSearchListVO
+                             {
+                                 Code = pais.code,
+                                 Name = countries.Where(F => F.NameEn == pais.name.ToUpper().Trim()).Any() ? countries.Where(F => F.NameEn == pais.name.ToUpper().Trim()).FirstOrDefault().NamePT.ToUpper().Trim() : pais.name.ToUpper().ToUpper(),
+                                 Confirmed = string.Format("{0:N0}", (pais.latest_data.confirmed == null ? 0 : (long)pais.latest_data.confirmed)),
+                                 Recovered = string.Format("{0:N0}", (pais.latest_data.recovered == null ? 0 : (long)pais.latest_data.recovered)),
+                                 Deaths = string.Format("{0:N0}", (pais.latest_data.deaths == null ? 0 : (long)pais.latest_data.deaths)),
+                                 DeathRate = string.Format("{0:N1}", (pais.latest_data.calculated.death_rate == null ? 0 : ((decimal)pais.latest_data.calculated.death_rate))) + "%",
+                                 ConfirmedToday = string.Format("{0:N0}", (pais.today.confirmed == null ? 0 : (long)pais.today.confirmed)),
+                                 DeathsToday = string.Format("{0:N0}", (pais.today.deaths == null ? 0 : (long)pais.today.deaths))
+                             }).ToList();
 
                 if (AtivarTraducao)
                 {

@@ -27,11 +27,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="View\CountryGraphicsDetail.xaml.cs">
+      <DependentUpon>CountryGraphicsDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\CountryDetail.xaml.cs">
       <DependentUpon>CountryDetail.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\StatesCasesList.xaml.cs">
       <DependentUpon>StatesCasesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\StateGraphicsDetail.xaml.cs">
+      <DependentUpon>StateGraphicsDetail.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\WorldCasesList.xaml.cs">
       <DependentUpon>WorldCasesList.xaml</DependentUpon>
@@ -42,7 +48,7 @@
     <EmbeddedResource Update="View\About.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\CasesTodayCountriesDetail.xaml">
+    <EmbeddedResource Update="View\CountryGraphicsDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\CityCasesList.xaml">
@@ -55,6 +61,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\StatesCasesList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\StateGraphicsDetail.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\WorldCasesList.xaml">

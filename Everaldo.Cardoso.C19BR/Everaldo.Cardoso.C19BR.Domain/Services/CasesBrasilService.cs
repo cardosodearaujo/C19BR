@@ -57,5 +57,28 @@ namespace Everaldo.Cardoso.C19BR.Domain.Services
                 return null;
             }
         }
+
+        public async Task<ListOfCases> GetTimeLineFromState(States state)
+        {
+            try
+            {
+                HttpRequestResponse response = await new HttpRequest().Get(APILinksBase.Casos.GetValue().ToString() + "?page_size=10.000&place_type=state&state=" + state.GetValue().ToString());
+                if (response.Success)
+                {
+                    var cases = JsonConvert.DeserializeObject<ListOfCases>(response.HttpResult.Content.ReadAsStringAsync().Result);
+                    if (cases != null && cases.count > 0)
+                    {
+                        return cases;
+                    }
+                }
+                Messages.Add(new Message(response.Exception.Message));
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Messages.Add(new Message(ex.Message));
+                return null;
+            }
+        }
     }
 }

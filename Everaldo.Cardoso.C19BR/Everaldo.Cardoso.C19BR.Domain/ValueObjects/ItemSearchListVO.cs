@@ -2,6 +2,7 @@
 {
     public class ItemSearchListVO
     {
+        public string Code { get; set; }
         public string Name { get; set; }
         public string Confirmed { get; set; }
         public string Recovered { get; set; }
