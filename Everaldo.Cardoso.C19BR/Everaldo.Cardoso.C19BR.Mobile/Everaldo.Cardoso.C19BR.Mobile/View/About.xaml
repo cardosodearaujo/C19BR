@@ -6,7 +6,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    Title="Sobre o aplicativo"
+    Title="Sobre o aplicativo (v1.0)"
     prism:ViewModelLocator.AutowireViewModel="True"
     mc:Ignorable="d">
 
