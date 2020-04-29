@@ -40,7 +40,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
                     lblStateName.Text = StatesOfBrazil.getStatesOfBrazil().Where(F => F.UF == state.GetValue().ToString()).FirstOrDefault().Name;
 
                     var timeline = (from line in cases.results
-                                    where line.date >= DateTime.Now.AddDays(-16)
+                                    where line.date >= DateTime.Now.AddDays(-15)
                                     orderby line.date ascending
                                     select line).ToList();
 
