@@ -89,6 +89,53 @@
                             </StackLayout>
 
 
+                            <!--  Casos por dia  -->
+                            <StackLayout Margin="0,10,0,0">
+
+                                <StackLayout>
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        Text="Casos por dia"
+                                        TextColor="#af4448" />
+
+                                    <BoxView HeightRequest="1.5" Color="#cb9ca1" />
+
+                                </StackLayout>
+
+                                <charts:ChartView
+                                    x:Name="cvwChartDataNewCases"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="250"
+                                    HorizontalOptions="FillAndExpand" />
+
+                            </StackLayout>
+
+                            <!--  Obitos por dia  -->
+                            <StackLayout Margin="0,10,0,0">
+
+                                <StackLayout>
+
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        Text="Óbitos por dia"
+                                        TextColor="#af4448" />
+
+                                    <BoxView HeightRequest="1.5" Color="#cb9ca1" />
+
+                                </StackLayout>
+
+                                <charts:ChartView
+                                    x:Name="cvwChartDataNewDeaths"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="250"
+                                    HorizontalOptions="FillAndExpand" />
+
+                            </StackLayout>
+
+
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>

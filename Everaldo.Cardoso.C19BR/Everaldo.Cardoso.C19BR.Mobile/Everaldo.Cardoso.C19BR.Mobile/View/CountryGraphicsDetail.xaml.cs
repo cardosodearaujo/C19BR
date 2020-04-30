@@ -42,8 +42,8 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
                 if (cases.data.timeline != null && cases.data.timeline.Count > 0)
                 {
                     var timeline = (from line in cases.data.timeline
-                                    where line.date >= DateTime.Now.AddDays(-16)
-                                    && line.date < DateTime.Now.Date
+                                    where line.date >= DateTime.Now.AddDays(-15)
+                                    //&& line.date < DateTime.Now.Date
                                     orderby line.date ascending
                                     select line).ToList();
 
