@@ -5,7 +5,7 @@ Desenvolvido com a ideia de reunir dados da Covid-19 do Brasil e do mundo, para 
 
 O [ABOUT-CORONA.NET](https://about-corona.net/) trata dos dados a nível mundial, portato traz informações gerais de diversos paises do mundo cada um com seus casos e suas timelines.
 
-O [Brasil.IO](https://brasil.io/home/)) trata dos dados a nível Brasil, e trabalha de forma colaborativa e mais detalhada, analisando as informações das secretarias de saúde dos estados de todo o país.
+O [Brasil.IO](https://brasil.io/home/) trata dos dados a nível Brasil, e trabalha de forma colaborativa e mais detalhada, analisando as informações das secretarias de saúde dos estados de todo o país.
 
 ### Fontes de dados:
 
@@ -20,7 +20,7 @@ O [Brasil.IO](https://brasil.io/home/)) trata dos dados a nível Brasil, e traba
 - Padrão MVVM: [Prism Library](https://prismlibrary.com/);
 - Páginas Popup: [Rg.Plugins.Popup](https://github.com/rotorgames/Rg.Plugins.Popup);
 - Caixas de diálogo: [ACR User Dialogs](https://github.com/aritchie/userdialogs);
-- Gráficos de evolução da epidemia no Brasil: [Microcharts](https://github.com/dotnet-ad/Microcharts);
+- Gráficos de evolução da epidemia: [Microcharts](https://github.com/dotnet-ad/Microcharts);
 
 ### Screenshots:
 ![Screenshot_20200421-120310](https://user-images.githubusercontent.com/17802409/79998425-12472c00-8491-11ea-8d04-019ca350ae7f.png)
