@@ -80,5 +80,28 @@ namespace Everaldo.Cardoso.C19BR.Domain.Services
                 return null;
             }
         }
+
+        public async Task<ListOfCasesCity> GetCasesTimeLineFromCity(States state, string codigoIBGE)
+        {
+            try
+            {
+                HttpRequestResponse response = await new HttpRequest().Get(APILinksBase.CasosFull.GetValue().ToString() + "?page_size=10.000&state=" + state.GetValue().ToString() + "&city_ibge_code=" + codigoIBGE);
+                if (response.Success)
+                {
+                    var cases = JsonConvert.DeserializeObject<ListOfCasesCity>(response.HttpResult.Content.ReadAsStringAsync().Result);
+                    if (cases != null && cases.count > 0)
+                    {
+                        return cases;
+                    }
+                }
+                Messages.Add(new Message(response.Exception.Message));
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Messages.Add(new Message(ex.Message));
+                return null;
+            }
+        }
     }
 }

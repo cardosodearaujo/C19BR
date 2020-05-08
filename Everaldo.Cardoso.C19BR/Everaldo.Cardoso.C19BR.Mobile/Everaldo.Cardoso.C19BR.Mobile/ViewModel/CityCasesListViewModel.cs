@@ -53,6 +53,8 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
             set { SetProperty(ref _IsRefreshing, value); }
         }
 
+        public ItemSearchListVO SelectedItem { set { DetailItem(value); } }
+
         public States AtualState { get; set; }
         #endregion
 
@@ -118,7 +120,8 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
                             Name = city.city.ToUpper(),
                             Confirmed = string.Format("{0:N0}", city.confirmed),
                             Deaths = string.Format("{0:N0}", city.deaths),
-                            DeathRate = city.death_rate == null ? "0,0%" : (string.Format("{0:N1}", (((decimal)city.death_rate) * 100)) + "%")
+                            DeathRate = city.death_rate == null ? "0,0%" : (string.Format("{0:N1}", (((decimal)city.death_rate) * 100)) + "%"),
+                            IBGE = city.city_ibge_code
                         }).ToList();
             }
         }
@@ -126,6 +129,11 @@ namespace Everaldo.Cardoso.C19BR.Mobile.ViewModel
         private async void OpenGraphics()
         {
             if (AtualState != null) await PopupNavigation.Instance.PushAsync(new StateGraphicsDetail(AtualState));
+        }
+
+        private async void DetailItem(ItemSearchListVO item)
+        {
+            if (item != null) await PopupNavigation.Instance.PushAsync(new CityGraphicsDetail(AtualState,item));
         }
         #endregion
     }

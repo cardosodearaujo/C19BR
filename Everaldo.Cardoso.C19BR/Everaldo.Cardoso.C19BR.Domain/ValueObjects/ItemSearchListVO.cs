@@ -10,5 +10,6 @@
         public string DeathRate { get; set; }
         public string DeathsToday { get; set; }
         public string ConfirmedToday { get; set; }
+        public string IBGE { get; set; }
     }
 }

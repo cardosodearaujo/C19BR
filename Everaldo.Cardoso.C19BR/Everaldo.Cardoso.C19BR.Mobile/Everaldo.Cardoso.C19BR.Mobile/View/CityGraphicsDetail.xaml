@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage
-    x:Class="Everaldo.Cardoso.C19BR.Mobile.View.CountryGraphicsDetail"
+    x:Class="Everaldo.Cardoso.C19BR.Mobile.View.CityGraphicsDetail"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
@@ -28,37 +28,11 @@
 
             <StackLayout x:Name="stlGeral">
 
-                <StackLayout>
-
-                    <Label
-                        x:Name="lblCountryName"
-                        FontAttributes="Bold"
-                        FontSize="20"
-                        TextColor="#af4448" />
-
-                    <Label
-                        Margin="0,10,0,0"
-                        FontAttributes="Bold"
-                        FontSize="15"
-                        Text="Dados de hoje:" />
-
-                    <StackLayout Margin="0,5,0,0" Orientation="Vertical">
-
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="+" TextColor="#af4448" />
-                            <Label x:Name="lblConfirmedToday" TextColor="#af4448" />
-                            <Label Text="confirmados" TextColor="#af4448" />
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="+" TextColor="#af4448" />
-                            <Label x:Name="lblDeathsToday" TextColor="#af4448" />
-                            <Label Text="mortos" TextColor="#af4448" />
-                        </StackLayout>
-
-                    </StackLayout>
-
-                </StackLayout>
+                <Label
+                    x:Name="lblCityName"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    TextColor="#af4448" />
 
                 <StackLayout Margin="0,10,0,0">
 
@@ -115,6 +89,7 @@
 
                             </StackLayout>
 
+
                             <!--  Casos por dia  -->
                             <StackLayout Margin="0,10,0,0">
 
@@ -160,6 +135,8 @@
                                     HorizontalOptions="FillAndExpand" />
 
                             </StackLayout>
+
+
                         </StackLayout>
                     </ScrollView>
                 </StackLayout>
@@ -178,6 +155,7 @@
                         TextColor="White" />
 
                 </StackLayout>
+
             </StackLayout>
         </StackLayout>
     </Frame>

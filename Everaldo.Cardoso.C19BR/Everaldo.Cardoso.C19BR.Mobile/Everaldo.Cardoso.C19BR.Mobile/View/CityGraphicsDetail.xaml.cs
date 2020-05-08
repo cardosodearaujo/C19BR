@@ -3,8 +3,6 @@ using Everaldo.Cardoso.C19BR.Domain.Enums;
 using Everaldo.Cardoso.C19BR.Domain.Objects.Brasil;
 using Everaldo.Cardoso.C19BR.Domain.Services;
 using Everaldo.Cardoso.C19BR.Domain.ValueObjects;
-using Everaldo.Cardoso.C19BR.Framework.Enums;
-using Everaldo.Cardoso.C19BR.Framework.ToolBox;
 using Microcharts;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
@@ -17,27 +15,31 @@ using Xamarin.Forms.Xaml;
 namespace Everaldo.Cardoso.C19BR.Mobile.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StateGraphicsDetail : PopupPage
+    public partial class CityGraphicsDetail : PopupPage
     {
-        public StateGraphicsDetail(States state)
+        public CityGraphicsDetail(States state, ItemSearchListVO item)
         {
             InitializeComponent();
-            LoadData(state);
+            LoadData(state ,item);
         }
 
-        private async void LoadData(States state)
+        private void LoadData(States state, ItemSearchListVO item)
+        {
+            lblCityName.Text = item.Name;
+            LoadDataCity(state, item);
+        }
+
+        private async void LoadDataCity(States state, ItemSearchListVO item)
         {
             aciLoading.IsRunning = true;
             aciLoading.IsVisible = true;
             stlGeral.IsVisible = false;
             try
-            {                
+            {
                 var service = new CasesBrasilService();
-                var cases = await service.GetTimeLineFromState(state);
+                var cases = await service.GetCasesTimeLineFromCity(state, item.IBGE);
                 if (cases != null)
                 {
-                    lblStateName.Text = StatesOfBrazil.getStatesOfBrazil().Where(F => F.UF == state.GetValue().ToString()).FirstOrDefault().Name;
-                                      
                     var timeline = (from line in cases.results
                                     where line.date >= DateTime.Now.AddDays(-16)
                                     && line.date < DateTime.Now.Date
@@ -46,11 +48,8 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
 
                     LoadChartCasesAccumulated(timeline);
                     LoadChartDeathsAccumulated(timeline);
-
-                    var timelineNotAccumulated = ConvertToNotAccumulated(cases.results);
-
-                    LoadChartNewCases(timelineNotAccumulated);
-                    LoadChartNewDeaths(timelineNotAccumulated);
+                    LoadChartNewCases(timeline);
+                    LoadChartNewDeaths(timeline);
                 }
             }
             catch (Exception ex)
@@ -65,55 +64,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
             }
         }
 
-        private List<CasesNotAccumulatedStateVO> ConvertToNotAccumulated(IList<Case> timeline)
-        {
-            timeline = (from F in timeline
-                        where F.date >= DateTime.Now.AddDays(-17)
-                        && F.date < DateTime.Now.Date
-                        orderby F.date descending
-                        select F).ToList();
-
-            var casesNotAccumulatedState = new List<CasesNotAccumulatedStateVO>();
-
-            var today = timeline.Where(Y => Y.date == timeline.Max(Z => Z.date)).FirstOrDefault();
-
-            ConvertToNotAccumulatedRecursively(timeline, ref casesNotAccumulatedState, today);
-
-            casesNotAccumulatedState = (from F in casesNotAccumulatedState
-                                        where F.Date >= DateTime.Now.AddDays(-16)
-                                        && F.Date < DateTime.Now.Date
-                                        orderby F.Date ascending
-                                        select F).ToList();
-
-            return casesNotAccumulatedState;
-        }
-
-        private void ConvertToNotAccumulatedRecursively(IList<Case> timeline, ref List<CasesNotAccumulatedStateVO> casesNotAccumulatedState , Case today)
-        {
-            if (today != null)
-            {
-                var currentList = timeline.Where(X => X.date < today.date).ToList();
-
-                if (currentList != null && currentList.Any())
-                {
-                    var yesterday = timeline.Where(W => W.date == currentList.Max(Z => Z.date)).FirstOrDefault();
-
-                    if (yesterday != null)
-                    {
-                        casesNotAccumulatedState.Add(new CasesNotAccumulatedStateVO
-                        {
-                            Date = today.date,
-                            Confirmed = today.confirmed - yesterday.confirmed,
-                            Deaths = today.deaths - yesterday.deaths
-                        });
-
-                        ConvertToNotAccumulatedRecursively(timeline, ref casesNotAccumulatedState, yesterday);
-                    }
-                }                
-            }            
-        }
-
-        private void LoadChartCasesAccumulated(IList<Case> timeline)
+        private void LoadChartCasesAccumulated(IList<CityCases> timeline)
         {
             if (timeline != null)
             {
@@ -122,12 +73,12 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
 
                 foreach (var day in timeline)
                 {
-                    entries.Add(new Entry((float)day.confirmed)
+                    entries.Add(new Entry((float)day.last_available_confirmed)
                     {
                         Label = day.date.ToString("dd"),
                         Color = black ? SKColors.Black : SKColor.Parse("#ba6b6c"),
                         TextColor = black ? SKColors.Black : SKColor.Parse("#ba6b6c"),
-                        ValueLabel = string.Format("{0:N0}", day.confirmed)
+                        ValueLabel = string.Format("{0:N0}", day.last_available_confirmed)
                     });
                     black = black ? false : true;
                 }
@@ -145,7 +96,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
             }
         }
 
-        private void LoadChartDeathsAccumulated(IList<Case> timeline)
+        private void LoadChartDeathsAccumulated(IList<CityCases> timeline)
         {
             if (timeline != null)
             {
@@ -154,12 +105,12 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
 
                 foreach (var day in timeline)
                 {
-                    entries.Add(new Entry((float)day.deaths)
+                    entries.Add(new Entry((float)day.last_available_deaths)
                     {
                         Label = day.date.ToString("dd"),
                         Color = black ? SKColors.Black : SKColor.Parse("#ba6b6c"),
                         TextColor = black ? SKColors.Black : SKColor.Parse("#ba6b6c"),
-                        ValueLabel = string.Format("{0:N0}", day.deaths)
+                        ValueLabel = string.Format("{0:N0}", day.last_available_deaths)
                     });
                     black = black ? false : true;
                 }
@@ -177,7 +128,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
             }
         }
 
-        private void LoadChartNewCases(IList<CasesNotAccumulatedStateVO> timeline)
+        private void LoadChartNewCases(IList<CityCases> timeline)
         {
             if (timeline != null)
             {
@@ -186,12 +137,12 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
 
                 foreach (var day in timeline)
                 {
-                    entries.Add(new Entry((float)day.Confirmed)
+                    entries.Add(new Entry((float)day.new_confirmed)
                     {
-                        Label = day.Date.ToString("dd"),
+                        Label = day.date.ToString("dd"),
                         Color = black ? SKColors.Black : SKColor.Parse("#ba6b6c"),
                         TextColor = black ? SKColors.Black : SKColor.Parse("#ba6b6c"),
-                        ValueLabel = string.Format("{0:N0}", day.Confirmed),
+                        ValueLabel = string.Format("{0:N0}", day.new_confirmed),
                     });
                     black = black ? false : true;
                 }
@@ -209,7 +160,7 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
             }
         }
 
-        private void LoadChartNewDeaths(IList<CasesNotAccumulatedStateVO> timeline)
+        private void LoadChartNewDeaths(IList<CityCases> timeline)
         {
             if (timeline != null)
             {
@@ -218,12 +169,12 @@ namespace Everaldo.Cardoso.C19BR.Mobile.View
 
                 foreach (var day in timeline)
                 {
-                    entries.Add(new Entry((float)day.Deaths)
+                    entries.Add(new Entry((float)day.new_deaths)
                     {
-                        Label = day.Date.ToString("dd"),
+                        Label = day.date.ToString("dd"),
                         Color = black ? SKColors.Black : SKColor.Parse("#ba6b6c"),
                         TextColor = black ? SKColors.Black : SKColor.Parse("#ba6b6c"),
-                        ValueLabel = string.Format("{0:N0}", day.Deaths),
+                        ValueLabel = string.Format("{0:N0}", day.new_deaths),
                     });
                     black = black ? false : true;
                 }

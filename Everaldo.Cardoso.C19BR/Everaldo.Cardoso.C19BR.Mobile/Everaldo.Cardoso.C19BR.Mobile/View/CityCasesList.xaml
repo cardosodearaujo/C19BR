@@ -89,6 +89,7 @@
                     IsRefreshing="{Binding IsRefreshing}"
                     ItemsSource="{Binding List}"
                     RefreshCommand="{Binding Refresh}"
+                    SelectedItem="{Binding SelectedItem}"
                     SeparatorVisibility="Default">
                     <ListView.ItemTemplate>
                         <DataTemplate>

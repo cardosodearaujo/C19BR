@@ -6,6 +6,8 @@ namespace Everaldo.Cardoso.C19BR.Domain.Enums
     {
         [EnumValue("https://brasil.io/api/dataset/covid19/caso/data")]
         Casos,
+        [EnumValue("https://brasil.io/api/dataset/covid19/caso_full/data")]
+        CasosFull,
         [EnumValue("https://brasil.io/api/dataset/covid19/boletim/data")]
         Boletins,
         [EnumValue(" https://corona-api.com/countries")]
